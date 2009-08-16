@@ -1,0 +1,33 @@
+As most of the naming will be replaced, and this is an early proof of concept release rather than a stable version, this USAGE will be limited to a minimal set of instruction.
+
+You can Create, Edit and view Souls of files. To create or view, you need to have a file in your local directory. NOTE: the Soul will be stored on a database online. You can retriew the same Soul from different computers, if you have a copy of the file in your local directory.
+
+#Create Soul of file foo.ogg 
+
+ve create foo.ogg
+
+#Edit Soul of file foo.ogg
+#NOTE: return if you do not want to change any data. You will be asked for adding DNA relations a#t the end
+
+ve edit foo.ogg
+
+#Twin Soul of foo.ogg an foo.mov
+
+ve alias foo.ogg foo.mov
+
+#Read help file
+
+ve --help
+ve-soul --help
+ve-aura --help
+
+#Check what files have Soul in current directory
+
+ve-soul
+
+#Display Soul of file foo.ogg (in current directory)
+#NOTE: you can add annotations (logs and messages in the aura)
+
+ve-soul foo.ogg
+
+

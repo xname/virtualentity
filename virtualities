@@ -1,0 +1,87 @@
+VIRTUAL ENTITY
+
+The passage from the virtual through the possible to the real is the fundamental act of creation ... 
+Ontology is not an abstract science ... Now the new virtualities, the naked life of the present, 
+have the capacity to take control of the processes of machinic metamorphosis. 
+(Hardt & Negri, 2000).
+
+Introduction
+Virtual Entity is a philosophical research starting from the assumption that the concepts of authenticity, ownership, uniqueness 
+and seriality are, within the digital domain, no longer valid. In fact there is no substantial difference between copy and original 
+on the Web, and these two categories are not relevant. Since any file can generate an infinite number of entities identical to itself, 
+there is no scarcity on the Net, and any resource is indefinitely available. Assuming possession is related to the numerical 
+proportion between resources (objects) and potential owners (subjects), then, whereas resources are not limited, the concept of 
+ownership and the idea of property become superfluous.
+If socialist and communist experiments in real world were limited by the presence of state ownership, Virtual Entity is proposing 
+the implementation of a non-property system within the digital domain. The practical method to achieve such result is a new radical 
+software being specifically developed to release, license, and catalogue digital files. This system, transforming the traditional 
+approach towards metadata, is based on the idea that any file is an independent creation living its own life and experiencing various 
+levels of transformation and progressive generation (of meaning, shape, and entities) in the course of its virtual existence. 
+This way digital resources, interpreted as cultural units, are considered the main actors of the web.
+
+Cosmogony
+Digital artificial world is structured by specific rules that are somewhat different from those expressed and manifested in the 
+physical world we normally experience. One relevant difference is the definition of identity. Since every 'singularity' is 
+reproducible in infinite number of identical copies, and there is no substantial difference between copy and original, because the 
+copy of a copy is exactly the same as the copy of the original, the basic distinction between copy and original is not relevant, 
+and digital identity is not unique. Comparing this to any analogue reality, we can immediately perceive that some of the values 
+applying to physical world are to be reconsidered within the digital domain. For example, an analogue tape recorded from a vinyl 
+record will play a different quality of music than that of the vinyl, and the quality of the incision will be more and more 
+compromised if we continue copying the same track from one tape to another. This quality decrease structures an inversely proportional 
+relation with the distance from the original content. Reproduction always depends on the system used, both in case of analogue and of 
+digital carriers. Speakers, amplifiers and players reproducing a sound can affect the quality of the result. But, in the case of an 
+.aiff audio file, for example, any copy will perform the same music, given an identical system to be played from. Although this 
+argument is rather obvious, it leads to the idea that, since there is no constitutional uniqueness inside 'digitality', there is no 
+relevant reason to limit the amount of copies that are to be created. From another perspective, this example shows a peculiar 
+fragility that electronic content implies. In fact, any electronic resource is depending on a certain variety of elements 
+to be reproduced and perceived (a player, an hard disc, a computer, a mini disc, and so forth). Any damage to a single part of such 
+complex system is compromising the fruition of the entire. If a photographic picture on paper can be visible when a corner of 
+the image is corrupted, it will be very difficult to display a file whereas a small part of it is damaged. Although electronic and 
+digital creatures have certain properties in common, Virtual Entity is focusing on digital entities living in the net, so to say 
+digital files online. The possibility to define these as 'immaterial' lays on the fact that the region where these are perceived 
+is often very far from the server they are laying on. People belonging to generations not educated to a basic computer literation 
+often think mails are physically landing on their specific machine, missing the point internet is basically 'sitting' somewhere 
+else and simply copied and/or displayed on local terminals. This apparent immateriality and cohereness renders the perception of the 
+internet obfuscated by common beliefs. There is a specific moment when a file is created, and there exists a very first instantiation 
+of any file that is uploaded, published and shared online. Once this poiesis is performed,  the entity is free to proliferate 
+indefinitely. Virtual Entity names this very first file that reaches the internet a 'native file', or master. There is no way to 
+distinguish it from all its 'nemesis', after the act of creation. Since identity appears to be distributed rather than concentrated, 
+digital identity requires a specific approach according to its essence. Virtual Entity is a project structured by a double nature, 
+and these two perspectives interweave a dialogic relation. While a  theoretical reflection on 'digitality' and its constitution 
+is taking place in the background, the development of a practical system to license and identify files online has begun. 
+
+Substances
+Any copy of a file can be defined as an instance of the file entity. The main idea of Virtual Entity is that, any time a native file 
+is created and uploaded to the Net, it is possible to initiate a Soul for this file. The Soul of a file, according to Ve's imaginary, 
+is the combination of a set of Metadata plus editable space for  information interchange, not very dissimilar from a wiki. Digital 
+entities are subdivided is four main substances, that are Text, Audio, Video and Image. All entities are either natural born analogue 
+or natural born digital. An interesting process to be taken into account is 'transmutation': what happens when  content is mutating 
+substance, or carrier, from analogue to digital, and vice-versa?  Substances are always immanent, and an entity can be defined in 
+accordance to more than one substance, because this identification depends on the specific approach to content, rather than on a 
+supposed unique matter. A number of critical examples and ambiguities can be analysed and tested. If software, as source code, is 
+considered text, an executable is something more malicious, composed, an 'organon' creating a different functioning. Be software a 
+daemon, or a polumetis spirit, it is not a simple entity.  
+
+
+Metadata
+An important and problematic element of digital content management is the organisation of Metadata, that is information about 
+information. Main issue is establishing a compatible form that is firm through time. One critical aspect is that, if metadata are 
+stored inside a file, when information is updated on one copy of the file, all other copies are not accessing the new data. Another 
+problem is the lack of persistence through successive codification, encoding, editing and transformation. Storing metadata inside 
+the Soul of a file, that is a database separated from any instance and independent from a specific file structure, is a technical 
+proposal to overpass some of the limits the use of metadata encountered so far. In such structure information would be accessible 
+from any instance of the file, because the repository of metadata is always providing the latest version. The idea of dividing 
+entities in four groups is useful also in this: a core metadata set listing a certain number of fields that are substance 
+independent, is combined to other fields that are substance specific.  A possible approach to define these basic elements of 
+description can be the following: metadata have to be, as much as possible, both machine and human understandable. To be optimised, 
+only a minimal amount of necessary information is to be considered relevant; permanent and global characteristics are preferred to 
+local, non permanent methods of description. Inspiring researches are the Latent Semantic Analysis on one side, that focuses on the 
+relationships, in vectorial semantics,  between a set of documents and the terms they contain, and the symbol abstractor named 
+Singular Value Decomposition, an algebraic method to describe the peculiarity of an object.   
+
+
+
+
+Eleonora Oreggia - November 2008 - xname.cc
+http://virtualentity.org
+

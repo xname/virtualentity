@@ -1,0 +1,24 @@
+TODO (Virtual Entity Alpha-Minus-Minus  CODENAME ZELJKO - January 2009)
+
+- security problems: ve-db and ve-engine are running in client mode. they will have to be server.
+- annotate: must be separated in two: on one side the relations, on the other comments and notes.
+- DNA: develop and describe the different types of dna relations between files. 
+  Cousin and other more complex relations implementing time will be defined
+- cache MD5 for fast retrival (get soul)
+- tab completion
+- backwarding arrow
+- join ve and ve-soul:
+			soul create cacca.ogg 		#create Soul cacca.ogg
+			soul cacca.ogg 			#display and edit cacca.ogg (soul+aura)
+			soul aura cacca.ogg 		#diplay and edit aura cacca.ogg
+			soul twinning 			#2 instances with identical Soul (-alias)
+
+- working with url and not only in local directory
+- error management
+- adding password to open Soul
+- explain better and change naming for 'alias': twinning, completion
+- remake relations (accrocchio)
+- important correction: DNA relations are currently prompted at the end of the editing. 
+  this is ok but more important, relations should be also in the aura, 
+  where everybody can edit, so password independent.
+

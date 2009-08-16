@@ -1,0 +1,51 @@
+To use  Virtual Entity you need to have the following:
+
+-terminal
+-ssh
+-python
+-python-mysqldb
+
+Dependencies:
+For *buntu or Debian users:
+sudo apt-get install python-mysqldb
+
+#if you want use a local database (in this case you have to modify the code: sostitute db.virtualentity.org with localhost 127.0.0.1)
+sudo apt-get install mysql-server 
+sudo apt-get install apache2 
+sudo apt-get install phpmyadmin 
+sudo apt-get install python-mysqldb
+
+Virtual Entity:
+- wget http://virtualentity.org/code/ve-alpha_minus_minus-pre.tar.gz #download
+- tar xfvz ve-alpha_minus_minus-pre.tar.gz #to unpack
+- cd ve-alpha_minus_minus-pre #go into the ve directory
+- chmod #change permissions
+chmod 777 ve.py
+chmod 777 ve-soul.py
+chmod 777 ve-aura.py
+./ve.py
+- make a simlink so you can excute using the commands ve, ve-soul or ve-aura
+sudo ln -s /my_path_to/ve/ve.py /usr/local/bin/ve
+sudo ln -s /my_path_to/ve/ve-soul.py /usr/local/bin/ve-soul
+sudo ln -s /my_path_to/ve/ve-aura.py /usr/local/bin/ve-aura
+
+#if you use a local database
+sudo apt-get install mysql-server apache2 phpmyadmin python-mysqldb
+
+Mac Users:
+It is always a good idea to have mac-port and fink installed. 
+The Terminal is in /Applications/Utilities. 
+Make sure ssh works and install python and python-mysqldb.
+
+Winblows:
+Sorry, there is no possibility, at this stage, to work on windows.
+Please try a live CD. 
+Here the puredyne:
+https://code.goto10.org/projects/puredyne
+
+You can find prototype files (having Soul) here:
+http://virtualentity.org/downloads/prototype_files_ve_01.zip	
+
+Report Bugs to:
+root@xname.cc
+

@@ -1,3 +1,5 @@
+Virtual Entity Alpha Minus Minus (CODENAME JAILBIRD) - INSTALL
+
 To use  Virtual Entity you need to have the following:
 
 -terminal
@@ -9,33 +11,39 @@ Dependencies:
 For *buntu or Debian users:
 sudo apt-get install python-mysqldb
 
-#if you want use a local database (in this case you have to modify the code: sostitute db.virtualentity.org with localhost 127.0.0.1)
+If you want use a local database (in this case you have to modify the code: sostitute db.virtualentity.org with localhost 127.0.0.1)
 sudo apt-get install mysql-server 
 sudo apt-get install apache2 
 sudo apt-get install phpmyadmin 
 sudo apt-get install python-mysqldb
 
-Virtual Entity:
-- wget http://virtualentity.org/code/ve-alpha_minus_minus-pre.tar.gz #download
-- tar xfvz ve-alpha_minus_minus-pre.tar.gz #to unpack
-- cd ve-alpha_minus_minus-pre #go into the ve directory
-- chmod #change permissions
-chmod 777 ve.py
-chmod 777 ve-soul.py
-chmod 777 ve-aura.py
-./ve.py
-- make a simlink so you can excute using the commands ve, ve-soul or ve-aura
-sudo ln -s /my_path_to/ve/ve.py /usr/local/bin/ve
-sudo ln -s /my_path_to/ve/ve-soul.py /usr/local/bin/ve-soul
-sudo ln -s /my_path_to/ve/ve-aura.py /usr/local/bin/ve-aura
+Get Virtual Entity!
+Open a terminal and download:
+- wget http://virtualentity.org/code/virtualentity-alpha_minus_minus.tar.gz 
+Unpack:
+- tar xfvz virtualentity-alpha_minus_minus.tar.gz
+Go into the directory:
+- cd virtualentity-alpha_minus_minus
+Change permissions:
+chmod 777 soul.py
+Execute:
+- ./soul.py
+Make a simlink to be able to use the command 'soul' from any directory:
+sudo ln -s /my_path_to_ve/src/soul.py /usr/local/bin/soul
 
-#if you use a local database
-sudo apt-get install mysql-server apache2 phpmyadmin python-mysqldb
+If you use a local database do the following:
+sudo apt-get install mysql-server 
+sudo apt-get install apache2 
+sudo apt-get install phpmyadmin 
+sudo apt-get install python-mysqldb
 
 Mac Users:
-It is always a good idea to have mac-port and fink installed. 
-The Terminal is in /Applications/Utilities. 
-Make sure ssh works and install python and python-mysqldb.
+Virtual Entity works on old PPC, but the installation process is not straight forward. 
+Instructions will come soon.
+If you want to test it on Mac-Intel, you have to install  python and  python-mysqldb.
+Please, share your experience with us! 
+Email you results to: dev@virtualentity.org
+Questions and complains to: ubik@xname.cc
 
 Winblows:
 Sorry, there is no possibility, at this stage, to work on windows.
@@ -43,7 +51,7 @@ Please try a live CD.
 Here the puredyne:
 https://code.goto10.org/projects/puredyne
 
-You can find prototype files (having Soul) here:
+You can download prototype files (having Soul) here:
 http://virtualentity.org/downloads/prototype_files_ve_01.zip	
 
 Report Bugs to:

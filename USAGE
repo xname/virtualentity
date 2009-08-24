@@ -1,33 +1,50 @@
-As most of the naming will be replaced, and this is an early proof of concept release rather than a stable version, this USAGE will be limited to a minimal set of instruction.
+Virtual Entity Alpha Minus Minus (CODENAME JAILBIRD)
+Here is a minimal set of instruction to use this simple software.
 
-You can Create, Edit and view Souls of files. To create or view, you need to have a file in your local directory. NOTE: the Soul will be stored on a database online. You can retriew the same Soul from different computers, if you have a copy of the file in your local directory.
+You can Create, Edit, Expand, Scan files's soul and you can annotate genetic and semantic relations among files in their Aura. 
+To create or work on a Soul, you need to have a copy of the file in your local directory. The Soul will be stored on a database online. 
+You can retriew the same Soul from different computers, if you have a copy of the file in your local directory.
 
-#Create Soul of file foo.ogg 
+Create Soul of file 'foo.ogg' :
 
-ve create foo.ogg
+$soul create foo.ogg
 
-#Edit Soul of file foo.ogg
-#NOTE: return if you do not want to change any data. You will be asked for adding DNA relations a#t the end
+Edit Soul of file 'foo.ogg' (return if you do not want to change any data):
 
-ve edit foo.ogg
+$soul edit foo.ogg
 
-#Twin Soul of foo.ogg an foo.mov
+Twin Soul of foo.ogg and foo.mov :
 
-ve alias foo.ogg foo.mov
+$soul twin foo.ogg foo.mov
 
-#Read help file
+Check what files have Soul in current directory:
 
-ve --help
-ve-soul --help
-ve-aura --help
+$soul scan 
 
-#Check what files have Soul in current directory
+Display Soul of <FILE> (in current directory):
 
-ve-soul
+$soul scan  <FILE>
 
-#Display Soul of file foo.ogg (in current directory)
-#NOTE: you can add annotations (logs and messages in the aura)
+Expand Soul of <FILE> with aura annotation:
 
-ve-soul foo.ogg
+$soul expand  <FILE>
 
+Annotate genetic relation where <FILE1> is ancestor of <FILE2>:
+
+$soul parentize <FILE1> <FILE2>
+
+Insert information in Aura: genetic and/or semantic relations and annotations:
+
+$soul aura <FILE> 
+
+Read help file:
+
+$soul --help
+
+
+May the entity be with you!
+
+
+Send comments to: xname@xname.cc
+Bugs and complains: ubik@xname.cc
 

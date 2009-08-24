@@ -1,4 +1,4 @@
-Virtual Entity Alpha-Minus-Minus :: CODENAME ZELJKO
+Virtual Entity Alpha Minus Minus - CODENAME JAILBIRD - August 2009
 
                        ...              
         'c:.          ,k0l.             
@@ -20,10 +20,16 @@ Virtual Entity Alpha-Minus-Minus :: CODENAME ZELJKO
                                         
 
 
-(multi purpose pre-release)
-Git repository available for browsing soon :))
-This pre-release was used on January 27th during a Practical Methods Laboratory at the MA Interactive Media at Goldsmiths, London, Department of Cultural Studies.
-Lesson 'Property, Relations, Databases' by Eleonora Oreggia
+
+New in this release:
+- single application for editing, creating, expanding and scanning Souls
+- separation of Aura and Soul
+- semantic and/or genetic relations
+- small changes in metadata sets (to be implemented in next release)
+- separation of edit and expand
+- general bugfix
+
+
 
 Report Bugs to:
 root@xname.cc

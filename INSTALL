@@ -11,7 +11,7 @@ Dependencies:
 For *buntu or Debian users:
 sudo apt-get install python-mysqldb
 
-If you want use a local database (in this case you have to modify the code: sostitute db.virtualentity.org with localhost 127.0.0.1)
+If you want use a local database (in this case you have to modify the code: substitute db.virtualentity.org with localhost 127.0.0.1)
 sudo apt-get install mysql-server 
 sudo apt-get install apache2 
 sudo apt-get install phpmyadmin 
@@ -24,32 +24,25 @@ Unpack:
 - tar xfvz virtualentity-alpha_minus_minus.tar.gz
 Go into the directory:
 - cd virtualentity-alpha_minus_minus
-Change permissions:
-chmod 777 soul.py
+Change permissions to the install script (maybe not needed)
+chmod 755 install.sh
 Execute:
-- ./soul.py
-Make a simlink to be able to use the command 'soul' from any directory:
-sudo ln -s /my_path_to_ve/src/soul.py /usr/local/bin/soul
+sudo ./install.sh
 
-If you use a local database do the following:
-sudo apt-get install mysql-server 
-sudo apt-get install apache2 
-sudo apt-get install phpmyadmin 
-sudo apt-get install python-mysqldb
 
 Mac Users:
 Virtual Entity works on old PPC, but the installation process is not straight forward. 
 Instructions will come soon.
 If you want to test it on Mac-Intel, you have to install  python and  python-mysqldb.
 Please, share your experience with us! 
-Email you results to: dev@virtualentity.org
+Email your results to: dev@virtualentity.org
 Questions and complains to: ubik@xname.cc
 
 Winblows:
 Sorry, there is no possibility, at this stage, to work on windows.
 Please try a live CD. 
 Here the puredyne:
-https://code.goto10.org/projects/puredyne
+http://code.goto10.org/projects/puredyne
 
 You can download prototype files (having Soul) here:
 http://virtualentity.org/downloads/prototype_files_ve_01.zip	

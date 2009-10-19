@@ -1,52 +1,80 @@
-Virtual Entity Alpha Minus Minus (CODENAME JAILBIRD) - INSTALL
+###########################################################
+##Virtual Entity Alpha Minus (CODENAME MUSOCCO) - INSTALL##
+###########################################################
 
-To use  Virtual Entity you need to have the following:
+To use Virtual Entity you need to have the following:
 
 -terminal
 -ssh
 -python
 -python-mysqldb
 
-Dependencies:
+#Dependencies:
 For *buntu or Debian users:
 sudo apt-get install python-mysqldb
 
-If you want use a local database (in this case you have to modify the code: substitute db.virtualentity.org with localhost 127.0.0.1)
+#If you want use a local database: 
+(in this case you have to modify the code: 
+substitute db.virtualentity.org with localhost 127.0.0.1)
+
 sudo apt-get install mysql-server 
 sudo apt-get install apache2 
 sudo apt-get install phpmyadmin 
 sudo apt-get install python-mysqldb
 
-Get Virtual Entity!
-Open a terminal and download:
-- wget http://virtualentity.org/code/virtualentity-alpha_minus_minus.tar.gz 
-Unpack:
-- tar xfvz virtualentity-alpha_minus_minus.tar.gz
+##############################################################
+##### Get Virtual Entity! ####################################
+Download the latest release from:
+http://virtualentity.org/downloads/software/
+Open a terminal, go to the directory where you put the package
+and unpack it:
+$ tar xfvz virtualentity-alpha_minus.tar.gz
+Or can clone the project using git:
+$ git clone http://code.xname.cc/virtualentity/.git
+###############################################################
+
+###############################################################
+#### Install Virtual Entity! ##################################
 Go into the directory:
-- cd virtualentity-alpha_minus_minus
+$ cd virtualentity-alpha_minus
 Change permissions to the install script (maybe not needed)
-chmod 755 install.sh
+$ chmod 755 install.sh
 Execute:
-sudo ./install.sh
+$ sudo ./install.sh
+###############################################################
 
+###############################################################
+#### Un-install Virtual Entity! ###############################
+$ sudo rm -rf /usr/share/soup /usr/bin/soup ;echo 'gone'
+# are you sure you want to do it?
+###############################################################
 
-Mac Users:
-Virtual Entity works on old PPC, but the installation process is not straight forward. 
-Instructions will come soon.
-If you want to test it on Mac-Intel, you have to install  python and  python-mysqldb.
-Please, share your experience with us! 
-Email your results to: dev@virtualentity.org
-Questions and complains to: ubik@xname.cc
+#Mac Users:
+Virtual Entity works on old PPC, and on Mac-Intel.
+Detailed instructions coming soon. 
 
-Winblows:
-Sorry, there is no possibility, at this stage, to work on windows.
+#Winblows:
+Sorry, there is no possibility to work on windows.
 Please try a live CD. 
-Here the puredyne:
+We like puredyne:
 http://code.goto10.org/projects/puredyne
 
-You can download prototype files (having Soul) here:
+###############################################################
+##### Get Entities! ###########################################
+You can download istantiated files (having Soul) here:
 http://virtualentity.org/downloads/prototype_files_ve_01.zip	
+###############################################################
 
-Report Bugs to:
+Please, share your experience with us!
+Email the list at: dev@virtualentity.org
+
+Comments and congrats:
 root@xname.cc
+
+Bugs and Complains:
+ubik@xname.cc
+
+###############################
+##May the Entity be with you!##
+###############################
 

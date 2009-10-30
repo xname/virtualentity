@@ -30,7 +30,7 @@ Open a terminal, go to the directory where you put the package
 and unpack it:
 $ tar xfvz virtualentity-alpha_minus.tar.gz
 Or can clone the project using git:
-$ git clone http://code.xname.cc/virtualentity/.git
+$ git clone http://code.xname.cc/virtualentity.git
 ###############################################################
 
 ###############################################################

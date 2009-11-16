@@ -223,7 +223,7 @@ def print_status(soul, verbose, parent_verbose):
 
 
 
-# Main program
+# Main program (in girum imus nocte et consumimur igni)
 
 if __name__ == "__main__":
 	opts = Options(sys.argv[1:])

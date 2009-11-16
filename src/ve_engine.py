@@ -2,7 +2,7 @@
 
 from ve_db import VeDB, VeDBException
 
-import md5
+import hashlib
 
 class Ve(object):
 	def __init__(self):
@@ -32,7 +32,7 @@ class Ve(object):
 	def md5file(self, infile):
 		'''Returns an md5 hash for an object with read() method.'''
 		fobj = file(infile, 'rb')
-		m = md5.new()
+		m = hashlib.md5()
 		while True:
 			d = fobj.read(8096)
 			if not d:

@@ -130,13 +130,14 @@ def print_status(soul, verbose, parent_verbose):
                         print "        Year of creation: " + meta['year_of_creation']
                         print "        Date of upload: " + meta['date_of_upload']
                         print "        Place of creation: " + meta['place_of_creation']
-                        print "        Filename: " + meta['filename']
+#                        print "        Filename: " + meta['filename']
                         print "        Subject: " + meta['subject']
-                        print "        Language: " + meta['language']
-                        print "        Institution: " + meta['institution']
-                        print "        Company: " + meta['company']
+			if soul['substance'] != 'I':
+                        	print "        Language: " + meta['language']
+#                        print "        Institution: " + meta['institution']
+#                        print "        Company: " + meta['company']
                         print "        Publisher: " + meta['publisher']
-                        print "        Purchaser: " + meta['purchaser']
+#                        print "        Purchaser: " + meta['purchaser']
                         print "        Collection: " + meta['collection']
                         if soul['substance'] == 'T':
                                 print "        Pages: " + meta['pages']
@@ -147,28 +148,28 @@ def print_status(soul, verbose, parent_verbose):
                         if soul['substance'] == 'I':
                                 print "        Size: " + meta['size']
                         print "        Keywords: " + meta['keywords']
-                        print "        Type: " + meta['type']
-                        print "        Genre: " + meta['genre']
-                        print "        Format: " + meta['format']
+                        print "        Type/Genre: " + meta['type']
+#                        print "        Genre: " + meta['genre']
+#                        print "        Format: " + meta['format']
                         print "        Natural born: " + meta['natural_born']
                         if meta['natural_born'] == 'D':
                                 print "        Creation software: " + meta['creation_software']
                         else:
-                                print "        Analog carrier: " + meta['carrier']
+                                print "        Carrier: " + meta['carrier']
                                 print "        Digitisation process: " + meta['digitisation_process']
                         if soul['substance'] == 'V':
                                 print "        System: " + meta['system']
                                 print "        Short content: " + meta['short_content']
                                 print "        Sound: " + meta['sound']
                                 print "        Color/BW: " + meta['color']
-                                print "        Announcing titles: " + meta['announcing_titles']
+                                print "        Titles: " + meta['announcing_titles']
                                 print "        Credits: " + meta['credits']
                         print "        Related URL: " + meta['url']
-                        print "        Fruition suggestions: " + meta['fruition_suggestions']
-                        print "        Observations: " + meta['observations']
-                        print "        Remark: " + meta['remark']
+                        print "        Suggestions: " + meta['fruition_suggestions']
+#                        print "        Observations: " + meta['observations']
+#                        print "        Remark: " + meta['remark']
                         print "        Future plans: " + meta['future_plans']
-                        print "        VE status: " + meta['ve_status']
+                        print "        Virtual Entity Status: " + meta['ve_status']
                         if meta['ve_status'] == 'N':
                                 print "        License: " + meta['license']
 
@@ -228,7 +229,7 @@ def print_status(soul, verbose, parent_verbose):
 if __name__ == "__main__":
 	opts = Options(sys.argv[1:])
 	ve = Ve()
-	ve.connect("db.virtualentity.org")
+	ve.connect("127.0.0.1")
 
 
 
@@ -284,20 +285,21 @@ if __name__ == "__main__":
 		meta['date_of_upload'] = raw_input_field(meta, 'date_of_upload')
 		print "Place (of creation)",
 		meta['place_of_creation'] = raw_input_field(meta, 'place_of_creation')
-		print "Filename",
-		meta['filename'] = raw_input_field(meta, 'filename')
+#		print "Filename",
+#		meta['filename'] = raw_input_field(meta, 'filename')
 		print "Subject",
 		meta['subject'] = raw_input_field(meta, 'subject')
-		print "Language (main)",
-		meta['language'] = raw_input_field(meta, 'language')
-		print "Institution",
-		meta['institution'] = raw_input_field(meta, 'institution')
-		print "Company",
-		meta['company'] = raw_input_field(meta, 'company')
+		if substance != 'image':
+			print "Language (main)",
+			meta['language'] = raw_input_field(meta, 'language')
+#		print "Institution",
+#		meta['institution'] = raw_input_field(meta, 'institution')
+#		print "Company",
+#		meta['company'] = raw_input_field(meta, 'company')
 		print "Publisher",
 		meta['publisher'] = raw_input_field(meta, 'publisher')
-		print "Purchaser",
-		meta['purchaser'] = raw_input_field(meta, 'purchaser')
+#		print "Purchaser",
+#		meta['purchaser'] = raw_input_field(meta, 'purchaser')
 		print "Collection",
 		meta['collection'] = raw_input_field(meta, 'collection')
 
@@ -320,19 +322,19 @@ if __name__ == "__main__":
 
 		print "Keywords",
 		meta['keywords'] = raw_input_field(meta, 'keywords')
-		print "Type",
+		print "Type/Genre",
 		meta['type'] = raw_input_field(meta, 'type')
-		print "Genre",
-		meta['genre'] = raw_input_field(meta, 'genre')
-		print "Format (original)",
-		meta['format'] = raw_input_field(meta, 'format')
+#		print "Genre",
+#		meta['genre'] = raw_input_field(meta, 'genre')
+#		print "Format (original)",
+#		meta['format'] = raw_input_field(meta, 'format')
 
 		while natural_born not in ('D', 'A'):
 			print "Natural Born ('D' for digital or 'A' for analogue)",
 			natural_born = raw_input_field(meta, 'natural_born')
 			meta['natural_born'] = natural_born
 		if meta['natural_born'] == 'A':
-			print "Material Carrier",
+			print "Carrier",
 			meta['carrier'] = raw_input_field(meta, 'carrier')
 			print "Digitisation Process",
 			meta['digitisation_process'] = raw_input_field(meta, 'digitisation_process')
@@ -360,20 +362,20 @@ if __name__ == "__main__":
 				print "Color ('C' for color or 'BW' for black/white)",
 				color = raw_input_field(meta, 'color')
 				meta['color'] = color
-			print "Announcing titles",
+			print "Titles",
 			meta['announcing_titles'] = raw_input_field(meta, 'announcing_titles')
 			print "Credits",
 			meta['credits'] = raw_input_field(meta, 'credits')
 
 		print "Related URL",
 		meta['url'] = raw_input_field(meta, 'url')
-		print "Fruition suggestions",
+		print "Suggestions",
 		meta['fruition_suggestions'] = raw_input_field(meta, 'fruition_suggestions')
-		print "Observations",
-		meta['observations'] = raw_input_field(meta, 'observations')
-		print "Remark",
-		meta['remark'] = raw_input_field(meta, 'remark')
-		print "Future Plans",
+#		print "Observations",
+#		meta['observations'] = raw_input_field(meta, 'observations')
+#		print "Remark",
+#		meta['remark'] = raw_input_field(meta, 'remark')
+		print "Future plans",
 		meta['future_plans'] = raw_input_field(meta, 'future_plans')
 
 		while ve_status not in ('Y', 'N'):

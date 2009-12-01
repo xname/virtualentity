@@ -83,29 +83,29 @@ class VeDB(object):
 		year_of_creation = self.esc(meta['year_of_creation'])
 		date_of_upload = self.esc(meta['date_of_upload'])
 		place_of_creation = self.esc(meta['place_of_creation'])
-		filename = self.esc(meta['filename'])
+#		filename = self.esc(meta['filename'])
 		subject = self.esc(meta['subject'])
 		language = self.esc(meta['language'])
-		institution = self.esc(meta['institution'])
-		company = self.esc(meta['company'])
+#		institution = self.esc(meta['institution'])
+#		company = self.esc(meta['company'])
 		publisher = self.esc(meta['publisher'])
-		purchaser = self.esc(meta['purchaser'])
+#		purchaser = self.esc(meta['purchaser'])
 		collection = self.esc(meta['collection'])
 		pages = self.esc(meta['pages'])
 		first_edition_year = self.esc(meta['first_edition_year'])
 		isbn = self.esc(meta['isbn'])
 		keywords = self.esc(meta['keywords'])
 		type = self.esc(meta['type'])
-		genre = self.esc(meta['genre'])
-		format = self.esc(meta['format'])
+#		genre = self.esc(meta['genre'])
+#		format = self.esc(meta['format'])
 		natural_born = self.esc(meta['natural_born'])
 		carrier = self.esc(meta['carrier'])
 		digitisation_process = self.esc(meta['digitisation_process'])
 		creation_software = self.esc(meta['creation_software'])
 		url = self.esc(meta['url'])
 		fruition_suggestions = self.esc(meta['fruition_suggestions'])
-		observations = self.esc(meta['observations'])
-		remark = self.esc(meta['remark'])
+#		observations = self.esc(meta['observations'])
+#		remark = self.esc(meta['remark'])
 		future_plans = self.esc(meta['future_plans'])
 		ve_status = self.esc(meta['ve_status'])
 		license = self.esc(meta['license'])
@@ -113,17 +113,17 @@ class VeDB(object):
 		try:
 			self.db.query("INSERT INTO text_meta " +
 				"(soul_id, title, author, year_of_creation, date_of_upload, place_of_creation, " + 
-				"filename, subject, language, institution, company, publisher, purchaser, collection, " +
-				"pages, first_edition_year, isbn, keywords, type, genre, format, natural_born, carrier, " + 
-				"digitisation_process, creation_software, url, fruition_suggestions, observations, remark, " +
+				"subject, language, publisher, collection, " +
+				"pages, first_edition_year, isbn, keywords, type, natural_born, carrier, " + 
+				"digitisation_process, creation_software, url, fruition_suggestions, " +
 				"future_plans, ve_status, license) VALUES " +
 				"('" + soul_id + "','" + title + "','" + author + "','" + year_of_creation + "','" +
-				date_of_upload + "',' " + place_of_creation + "','" + filename + "','" + subject + "','" +
-				language + "','" + institution + "','" + company + "','" + publisher + "','" + purchaser + "','" +
+				date_of_upload + "',' " + place_of_creation + "','" + subject + "','" +
+				language + "','" + publisher + "','" +
 				collection + "','" + pages + "','" + first_edition_year + "','" + isbn + "','" + keywords + "','" +
-				type + "','" + genre + "','" + format + "','" + natural_born + "','" + carrier + "','" +
+				type + "','" + natural_born + "','" + carrier + "','" +
 				digitisation_process + "','" + creation_software + "','" + url + "','" +
-				fruition_suggestions + "','" + observations + "','" + remark + "','" + future_plans + "','" +
+				fruition_suggestions + "','" + future_plans + "','" +
 				ve_status + "','" + license + "')")
 			self.db.query("UPDATE souls SET substance='T' WHERE id='" + soul_id + "'")
 			return self.db.insert_id()
@@ -140,19 +140,19 @@ class VeDB(object):
 		year_of_creation = self.esc(meta['year_of_creation'])
 		date_of_upload = self.esc(meta['date_of_upload'])
 		place_of_creation = self.esc(meta['place_of_creation'])
-		filename = self.esc(meta['filename'])
+#		filename = self.esc(meta['filename'])
 		subject = self.esc(meta['subject'])
 		language = self.esc(meta['language'])
-		institution = self.esc(meta['institution'])
-		company = self.esc(meta['company'])
+#		institution = self.esc(meta['institution'])
+#		company = self.esc(meta['company'])
 		publisher = self.esc(meta['publisher'])
-		purchaser = self.esc(meta['purchaser'])
+#		purchaser = self.esc(meta['purchaser'])
 		collection = self.esc(meta['collection'])
 		duration = self.esc(meta['duration'])
 		keywords = self.esc(meta['keywords'])
 		type = self.esc(meta['type'])
-		genre = self.esc(meta['genre'])
-		format = self.esc(meta['format'])
+#		genre = self.esc(meta['genre'])
+#		format = self.esc(meta['format'])
 		natural_born = self.esc(meta['natural_born'])
 		carrier = self.esc(meta['carrier'])
 		digitisation_process = self.esc(meta['digitisation_process'])
@@ -161,26 +161,26 @@ class VeDB(object):
 		sound = self.esc(meta['sound'])
 		url = self.esc(meta['url'])
 		fruition_suggestions = self.esc(meta['fruition_suggestions'])
-		observations = self.esc(meta['observations'])
-		remark = self.esc(meta['remark'])
+#		observations = self.esc(meta['observations'])
+#		remark = self.esc(meta['remark'])
 		future_plans = self.esc(meta['future_plans'])
 		ve_status = self.esc(meta['ve_status'])
 		license = self.esc(meta['license'])
 		
 		try:
 			self.db.query("INSERT INTO audio_meta " +
-				"(soul_id, title, author, year_of_creation, date_of_upload, place_of_creation," + 
-				"filename, subject, language, institution, company, publisher, purchaser, collection, duration," +
-				"keywords, type, genre, format, natural_born, carrier, digitisation_process, creation_software, " + 
-				"short_content, sound, url, fruition_suggestions, observations, remark, " +
+				"(soul_id, title, author, year_of_creation, date_of_upload, place_of_creation, " + 
+				"subject, language, publisher, collection, duration, " +
+				"keywords, type, natural_born, carrier, digitisation_process, creation_software, " + 
+				"short_content, sound, url, fruition_suggestions, " +
 				"future_plans, ve_status, license) VALUES " +
 				"('" + soul_id + "','" + title + "','" + author + "','" + year_of_creation + "','" +
-				date_of_upload + "',' " + place_of_creation + "','" + filename + "','" + subject + "','" +
-				language + "','" + institution + "','" + company + "','" + publisher + "','" + purchaser + "','" +
-				collection + "','" + duration + "','" + keywords + "','" + type + "','" + genre + "','" + 
-				format + "','" + natural_born + "','" + carrier + "','" + digitisation_process + "','" + 
+				date_of_upload + "',' " + place_of_creation + "','" + subject + "','" +
+				language + "','" + publisher + "','" +
+				collection + "','" + duration + "','" + keywords + "','" + type + "','" + 
+				natural_born + "','" + carrier + "','" + digitisation_process + "','" + 
 				creation_software + "','" + short_content + "','" + sound + "','" + url + "','" + 
-				fruition_suggestions + "','" + observations + "','" + remark + "','" + future_plans + "','" + 
+				fruition_suggestions + "','" + future_plans + "','" + 
 				ve_status + "','" + license + "')")
 			self.db.query("UPDATE souls SET substance='A' WHERE id='" + soul_id + "'")
 			return self.db.insert_id()
@@ -197,19 +197,19 @@ class VeDB(object):
 		year_of_creation = self.esc(meta['year_of_creation'])
 		date_of_upload = self.esc(meta['date_of_upload'])
 		place_of_creation = self.esc(meta['place_of_creation'])
-		filename = self.esc(meta['filename'])
+#		filename = self.esc(meta['filename'])
 		subject = self.esc(meta['subject'])
 		language = self.esc(meta['language'])
-		institution = self.esc(meta['institution'])
-		company = self.esc(meta['company'])
+#		institution = self.esc(meta['institution'])
+#		company = self.esc(meta['company'])
 		publisher = self.esc(meta['publisher'])
-		purchaser = self.esc(meta['purchaser'])
+#		purchaser = self.esc(meta['purchaser'])
 		collection = self.esc(meta['collection'])
 		duration = self.esc(meta['duration'])
 		keywords = self.esc(meta['keywords'])
 		type = self.esc(meta['type'])
-		genre = self.esc(meta['genre'])
-		format = self.esc(meta['format'])
+#		genre = self.esc(meta['genre'])
+#		format = self.esc(meta['format'])
 		natural_born = self.esc(meta['natural_born'])
 		carrier = self.esc(meta['carrier'])
 		digitisation_process = self.esc(meta['digitisation_process'])
@@ -222,8 +222,8 @@ class VeDB(object):
 		credits = self.esc(meta['credits'])
 		url = self.esc(meta['url'])
 		fruition_suggestions = self.esc(meta['fruition_suggestions'])
-		observations = self.esc(meta['observations'])
-		remark = self.esc(meta['remark'])
+#		observations = self.esc(meta['observations'])
+#		remark = self.esc(meta['remark'])
 		future_plans = self.esc(meta['future_plans'])
 		ve_status = self.esc(meta['ve_status'])
 		license = self.esc(meta['license'])
@@ -231,18 +231,18 @@ class VeDB(object):
 		try:
 			self.db.query("INSERT INTO video_meta " +
 				"(soul_id, title, author, year_of_creation, date_of_upload, place_of_creation," + 
-				"filename, subject, language, institution, company, publisher, purchaser, collection, duration," +
-				"keywords, type, genre, format, natural_born, carrier, digitisation_process, creation_software, system, " + 
-				"short_content, sound, color, announcing_titles, credits, url, fruition_suggestions, observations, remark, " +
+				"subject, language, publisher, collection, duration," +
+				"keywords, type, natural_born, carrier, digitisation_process, creation_software, system, " + 
+				"short_content, sound, color, announcing_titles, credits, url, fruition_suggestions, " +
 				"future_plans, ve_status, license) VALUES " +
 				"('" + soul_id + "','" + title + "','" + author + "','" + year_of_creation + "','" +
-				date_of_upload + "',' " + place_of_creation + "','" + filename + "','" + subject + "','" +
-				language + "','" + institution + "','" + company + "','" + publisher + "','" + purchaser + "','" +
+				date_of_upload + "',' " + place_of_creation + "','" + subject + "','" +
+				language + "','" + publisher + "','" +
 				collection + "','" + duration + "','" + keywords + "','" +
-				type + "','" + genre + "','" + format + "','" + natural_born + "','" + carrier + "','" +
+				type + "','" + natural_born + "','" + carrier + "','" +
 				digitisation_process + "','" + creation_software + "','" + system + "','" + short_content + "','" +
 				sound + "','" + color + "','" + announcing_titles + "','" + credits + "','" + url + "','" +
-				fruition_suggestions + "','" + observations + "','" + remark + "','" + future_plans + "','" +
+				fruition_suggestions + "','" + future_plans + "','" +
 				ve_status + "','" + license + "')")
 			self.db.query("UPDATE souls SET substance='V' WHERE id='" + soul_id + "'")
 			return self.db.insert_id()
@@ -259,27 +259,27 @@ class VeDB(object):
 		year_of_creation = self.esc(meta['year_of_creation'])
 		date_of_upload = self.esc(meta['date_of_upload'])
 		place_of_creation = self.esc(meta['place_of_creation'])
-		filename = self.esc(meta['filename'])
+#		filename = self.esc(meta['filename'])
 		subject = self.esc(meta['subject'])
-		language = self.esc(meta['language'])
-		institution = self.esc(meta['institution'])
-		company = self.esc(meta['company'])
+#		language = self.esc(meta['language'])
+#		institution = self.esc(meta['institution'])
+#		company = self.esc(meta['company'])
 		publisher = self.esc(meta['publisher'])
-		purchaser = self.esc(meta['purchaser'])
+#		purchaser = self.esc(meta['purchaser'])
 		collection = self.esc(meta['collection'])
 		size = self.esc(meta['size'])
 		keywords = self.esc(meta['keywords'])
 		type = self.esc(meta['type'])
-		genre = self.esc(meta['genre'])
-		format = self.esc(meta['format'])
+#		genre = self.esc(meta['genre'])
+#		format = self.esc(meta['format'])
 		natural_born = self.esc(meta['natural_born'])
 		carrier = self.esc(meta['carrier'])
 		digitisation_process = self.esc(meta['digitisation_process'])
 		creation_software = self.esc(meta['creation_software'])
 		url = self.esc(meta['url'])
 		fruition_suggestions = self.esc(meta['fruition_suggestions'])
-		observations = self.esc(meta['observations'])
-		remark = self.esc(meta['remark'])
+#		observations = self.esc(meta['observations'])
+#		remark = self.esc(meta['remark'])
 		future_plans = self.esc(meta['future_plans'])
 		ve_status = self.esc(meta['ve_status'])
 		license = self.esc(meta['license'])
@@ -287,17 +287,16 @@ class VeDB(object):
 		try:
 			self.db.query("INSERT INTO image_meta " +
 				"(soul_id, title, author, year_of_creation, date_of_upload, place_of_creation," + 
-				"filename, subject, language, institution, company, publisher, purchaser, collection, size," +
-				"keywords, type, genre, format, natural_born, carrier, digitisation_process, creation_software, " + 
-				"url, fruition_suggestions, observations, remark, " +
+				"subject, publisher, collection, size," +
+				"keywords, type, natural_born, carrier, digitisation_process, creation_software, " + 
+				"url, fruition_suggestions, " +
 				"future_plans, ve_status, license) VALUES " +
 				"('" + soul_id + "','" + title + "','" + author + "','" + year_of_creation + "','" +
-				date_of_upload + "',' " + place_of_creation + "','" + filename + "','" + subject + "','" +
-				language + "','" + institution + "','" + company + "','" + publisher + "','" + purchaser + "','" +
-				collection + "','" + size + "','" + keywords + "','" + type + "','" + genre + "','" + 
-				format + "','" + natural_born + "','" + carrier + "','" + digitisation_process + "','" + 
+				date_of_upload + "',' " + place_of_creation + "','" + subject + "','" + publisher + "','" +
+				collection + "','" + size + "','" + keywords + "','" + type + "','" + 
+				natural_born + "','" + carrier + "','" + digitisation_process + "','" + 
 				creation_software + "','" + url + "','" + 
-				fruition_suggestions + "','" + observations + "','" + remark + "','" + future_plans + "','" + 
+				fruition_suggestions + "','" + future_plans + "','" + 
 				ve_status + "','" + license + "')")
 			self.db.query("UPDATE souls SET substance='I' WHERE id='" + soul_id + "'")
 			return self.db.insert_id()
@@ -310,9 +309,9 @@ class VeDB(object):
 
 	def get_text_meta(self, soul_id):
 		self.db.query("SELECT id, title, author, year_of_creation, date_of_upload, place_of_creation," +
-			"filename, subject, language, institution, company, publisher, purchaser, collection," +
-			"pages, first_edition_year, isbn, keywords, type, genre, format, natural_born, carrier," +
-			"digitisation_process, creation_software, url, fruition_suggestions, observations, remark," +
+			"subject, language, publisher, collection," +
+			"pages, first_edition_year, isbn, keywords, type, natural_born, carrier," +
+			"digitisation_process, creation_software, url, fruition_suggestions," +
 			"future_plans, ve_status, license FROM text_meta WHERE soul_id='" + soul_id + "'")
 		r = self.db.store_result()
 		row = r.fetch_row()
@@ -320,19 +319,19 @@ class VeDB(object):
 			return None
 		row = row[0]
 		return { 'id':row[0], 'title':row[1], 'author':row[2], 'soul_id':soul_id,
-			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5], 'filename':row[6],
-			'subject':row[7], 'language':row[8], 'institution':row[9], 'company':row[10], 'publisher':row[11],
-			'purchaser':row[12], 'collection':row[13], 'pages':row[14], 'first_edition_year':row[15],
-			'isbn':row[16], 'keywords':row[17], 'type':row[18], 'genre':row[19], 'format':row[20],
-			'natural_born':row[21], 'carrier':row[22], 'digitisation_process':row[23],
-			'creation_software':row[24], 'url':row[25], 'fruition_suggestions':row[26], 'observations':row[27],
-			'remark':row[28], 'future_plans':row[29], 've_status':row[30], 'license':row[31] }
+			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5],
+			'subject':row[6], 'language':row[7], 'publisher':row[8],
+			'collection':row[9], 'pages':row[10], 'first_edition_year':row[11],
+			'isbn':row[12], 'keywords':row[13], 'type':row[14],
+			'natural_born':row[15], 'carrier':row[16], 'digitisation_process':row[17],
+			'creation_software':row[18], 'url':row[19], 'fruition_suggestions':row[20],
+			'future_plans':row[21], 've_status':row[22], 'license':row[23] }
 
 	def get_audio_meta(self, soul_id):
 		self.db.query("SELECT id, title, author, year_of_creation, date_of_upload, place_of_creation," +
-			"filename, subject, language, institution, company, publisher, purchaser, collection," +
-			"keywords, type, genre, format, natural_born, carrier," +
-			"digitisation_process, creation_software, url, fruition_suggestions, observations, remark," +
+			"subject, language, publisher, collection," +
+			"keywords, type, natural_born, carrier," +
+			"digitisation_process, creation_software, url, fruition_suggestions," +
 			"future_plans, ve_status, license, duration, short_content, sound " +
 			"FROM audio_meta WHERE soul_id='" + soul_id + "'")
 		r = self.db.store_result()
@@ -341,20 +340,20 @@ class VeDB(object):
 			return None
 		row = row[0]
 		return { 'id':row[0], 'title':row[1], 'author':row[2], 'soul_id':soul_id,
-			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5], 'filename':row[6],
-			'subject':row[7], 'language':row[8], 'institution':row[9], 'company':row[10], 'publisher':row[11],
-			'purchaser':row[12], 'collection':row[13],
-			'keywords':row[14], 'type':row[15], 'genre':row[16], 'format':row[17],
-			'natural_born':row[18], 'carrier':row[19], 'digitisation_process':row[20],
-			'creation_software':row[21], 'url':row[22], 'fruition_suggestions':row[23], 'observations':row[24],
-			'remark':row[25], 'future_plans':row[26], 've_status':row[27], 'license':row[28],
-			'duration':row[29], 'short_content':row[30], 'sound':row[31] }
+			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5], 
+			'subject':row[6], 'language':row[7], 'publisher':row[8],
+			'collection':row[9],
+			'keywords':row[10], 'type':row[11],
+			'natural_born':row[12], 'carrier':row[13], 'digitisation_process':row[14],
+			'creation_software':row[15], 'url':row[16], 'fruition_suggestions':row[17], 
+			'future_plans':row[18], 've_status':row[19], 'license':row[20],
+			'duration':row[21], 'short_content':row[22], 'sound':row[23] }
 
 	def get_image_meta(self, soul_id):
 		self.db.query("SELECT id, title, author, year_of_creation, date_of_upload, place_of_creation," +
-			"filename, subject, language, institution, company, publisher, purchaser, collection," +
-			"keywords, type, genre, format, natural_born, carrier," +
-			"digitisation_process, creation_software, url, fruition_suggestions, observations, remark," +
+			"subject, publisher, collection," +
+			"keywords, type, natural_born, carrier," +
+			"digitisation_process, creation_software, url, fruition_suggestions," +
 			"future_plans, ve_status, license, size " +
 			"FROM image_meta WHERE soul_id='" + soul_id + "'")
 		r = self.db.store_result()
@@ -363,20 +362,20 @@ class VeDB(object):
 			return None
 		row = row[0]
 		return { 'id':row[0], 'title':row[1], 'author':row[2], 'soul_id':soul_id,
-			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5], 'filename':row[6],
-			'subject':row[7], 'language':row[8], 'institution':row[9], 'company':row[10], 'publisher':row[11],
-			'purchaser':row[12], 'collection':row[13],
-			'keywords':row[14], 'type':row[15], 'genre':row[16], 'format':row[17],
-			'natural_born':row[18], 'carrier':row[19], 'digitisation_process':row[20],
-			'creation_software':row[21], 'url':row[22], 'fruition_suggestions':row[23], 'observations':row[24],
-			'remark':row[25], 'future_plans':row[26], 've_status':row[27], 'license':row[28],
-			'size':row[29] }
+			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5],
+			'subject':row[6], 'publisher':row[7],
+			'collection':row[8],
+			'keywords':row[9], 'type':row[10], 
+			'natural_born':row[11], 'carrier':row[12], 'digitisation_process':row[13],
+			'creation_software':row[14], 'url':row[15], 'fruition_suggestions':row[16], 
+			'future_plans':row[17], 've_status':row[18], 'license':row[19],
+			'size':row[20] }
 
 	def get_video_meta(self, soul_id):
 		self.db.query("SELECT id, title, author, year_of_creation, date_of_upload, place_of_creation," +
-			"filename, subject, language, institution, company, publisher, purchaser, collection," +
-			"keywords, type, genre, format, natural_born, carrier," +
-			"digitisation_process, creation_software, url, fruition_suggestions, observations, remark," +
+			"subject, language, publisher, collection," +
+			"keywords, type, natural_born, carrier," +
+			"digitisation_process, creation_software, url, fruition_suggestions," +
 			"future_plans, ve_status, license, " + 
 			"duration, system, short_content, sound, color, announcing_titles, credits " +
 			"FROM video_meta WHERE soul_id='" + soul_id + "'")
@@ -386,15 +385,15 @@ class VeDB(object):
 			return None
 		row = row[0]
 		return { 'id':row[0], 'title':row[1], 'author':row[2], 'soul_id':soul_id,
-			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5], 'filename':row[6],
-			'subject':row[7], 'language':row[8], 'institution':row[9], 'company':row[10], 'publisher':row[11],
-			'purchaser':row[12], 'collection':row[13],
-			'keywords':row[14], 'type':row[15], 'genre':row[16], 'format':row[17],
-			'natural_born':row[18], 'carrier':row[19], 'digitisation_process':row[20],
-			'creation_software':row[21], 'url':row[22], 'fruition_suggestions':row[23], 'observations':row[24],
-			'remark':row[25], 'future_plans':row[26], 've_status':row[27], 'license':row[28],
-			'duration':row[29], 'system':row[30], 'short_content':row[31], 'sound':row[32], 'color':row[33],
-			'announcing_titles':row[34], 'credits':row[35] }
+			'year_of_creation':row[3], 'date_of_upload':row[4], 'place_of_creation':row[5],
+			'subject':row[6], 'language':row[7], 'publisher':row[8],
+			'collection':row[9],
+			'keywords':row[10], 'type':row[11],
+			'natural_born':row[12], 'carrier':row[13], 'digitisation_process':row[14],
+			'creation_software':row[15], 'url':row[16], 'fruition_suggestions':row[17],
+			'future_plans':row[18], 've_status':row[19], 'license':row[20],
+			'duration':row[21], 'system':row[22], 'short_content':row[23], 'sound':row[24], 'color':row[25],
+			'announcing_titles':row[26], 'credits':row[27] }
 
 	def check_ownership(self, soul, password):
 		'''Check if password match the soul's password'''

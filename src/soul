@@ -229,7 +229,7 @@ def print_status(soul, verbose, parent_verbose):
 if __name__ == "__main__":
 	opts = Options(sys.argv[1:])
 	ve = Ve()
-	ve.connect("127.0.0.1")
+	ve.connect("db.virtualentity.org")
 
 
 

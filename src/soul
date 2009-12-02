@@ -281,7 +281,7 @@ if __name__ == "__main__":
 		meta['author'] = raw_input_field(meta, 'author')
 		print "Year (of creation)",
 		meta['year_of_creation'] = raw_input_field(meta, 'year_of_creation')
-		print "Date (of upload) (format: YYYY-DD-MM HH:MM:SS)",
+		print "Date (of upload) (format: YYYY-DD-MM)",
 		meta['date_of_upload'] = raw_input_field(meta, 'date_of_upload')
 		print "Place (of creation)",
 		meta['place_of_creation'] = raw_input_field(meta, 'place_of_creation')

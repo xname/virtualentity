@@ -4,6 +4,7 @@ import sys
 import getopt
 import glob
 import os
+import readline
 
 sys.path.insert(0,'/usr/share/soul/')
 

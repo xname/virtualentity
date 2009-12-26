@@ -1,4 +1,4 @@
-Virtual Entity Alpha Minus Minus - CODENAME JAILBIRD - August 2009
+Virtual Entity Alpha Minus - CODENAME MUSOCCO - December 2009
 
                        ...              
         'c:.          ,k0l.             
@@ -22,14 +22,10 @@ Virtual Entity Alpha Minus Minus - CODENAME JAILBIRD - August 2009
 
 
 New in this release:
-- single application for editing, creating, expanding and scanning Souls
-- separation of Aura and Soul
-- semantic and/or genetic relations
-- small changes in metadata sets (to be implemented in next release)
-- separation of edit and expand
-- general bugfix
-
-
+- further changes in metadata sets 
+- implementation of new metadata sets in the application
+- install script
+- add libreadline for history retrieving in interactive shell
 
 Report Bugs to:
 root@xname.cc

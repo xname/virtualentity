@@ -1,16 +1,13 @@
-TODO (Virtual Entity Alpha-Minus-Minus  CODENAME JAILBIRD - August 2009)
+TODO (Virtual Entity Alpha Minus - CODENAME MUSOCCO)
 
 - security problems: ve-db and ve-engine are running in client mode. they will have to be server.
 - cache MD5 for fast retrival (get soul)
 - tab completion
-- backwarding arrow
 - working with url and not only in local directory
 - error management
 - adding password to open Soul
 - add possibility to delete relations
 - add tags as a metadata field
-- reduce metadata fields
 - clean relations
-- add a python function to write more than one line at a time
 - web interface for Soul's creation
 - graphical mapping of relations 

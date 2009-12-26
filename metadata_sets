@@ -1,9 +1,18 @@
-METADATA FIELDS - PROTOTYPE SERIE 02 - CODENAME JAILBIRD
+=================================================================
+     METADATA FIELDS - PROTOTYPE SERIE 03 - CODENAME MUSOCCO
+=================================================================
 
+________________________________________________________________
+| SOUL ---> where you can read what an  entity is, its essence  |
+|                                                               |
+| AURA ---> karma, DNA, experience and interfacing world/entity |
+|_______________________________________________________________|
+
+----------------------------------
+SOUL (SUBSTANCE DEPENDENT)
+----------------------------------
 -----------------
-
 AUDIO
-
 -----------------
 
 Title 
@@ -11,16 +20,13 @@ Author
 Year (of creation)
 Date (of upload)
 Place (of creation)
-Filename
 Subject
 Language (main)
 Publisher 
 Collection
 Duration
 Keywords
-Type
-Genre 
-Format (original)
+Type/Genre 
 Natural Born (digital or analogue)
 Analogue/Material Carrier (if born analogue)
 Digitisation process (if born analogue)
@@ -29,21 +35,12 @@ Short Content
 Sound (stereo/mono)
 Related URL
 Fruition Suggestions 
-Observations 
-Remark
 FuturePlans 
-ParentFile
-ChildFile 
-CousinFile
-RelatedFile
-Virtual Entity Status 
+Virtual Entity Status
 License (if not VE)
 
-
 -----------------
-
 VIDEO
-
 -----------------
 
 Title 
@@ -51,15 +48,13 @@ Author
 Year (of creation)
 Date (of upload)
 Place (of creation)
-Filename
 Subject
 Language (main)
 Publisher
 Collection 
 Duration
 Keywords
-Type
-Genre 
+Type/Genre 
 Format (original carrier. ex, dv, beta)
 Natural Born (digital or analogue)
 Analogue/Material Carrier (if born analogue)
@@ -73,21 +68,12 @@ Announcing Titles
 Credits
 Related URL
 Fruition Suggestions
-Observations
-Remark
 Future Plans 
-ParentFile
-ChildFile
-CousinFile
-RelatedFile
-Virtual Entity Status 
+Virtual Entity Status
 License (if not VE)
 
-
 -----------------
-
 TEXT
-
 -----------------
 
 Title 
@@ -95,7 +81,6 @@ Author
 Year (of creation)
 Date (of upload)
 Place (of creation)
-Filename
 Subject
 Language (main)
 Publisher
@@ -104,8 +89,7 @@ Pages
 First Edition Year
 ISBN 
 Keywords
-Type 
-Genre
+Type/Genre
 Format (original)
 Natural Born (digital or analogue)
 Analogue/Material Carrier (if born analogue)
@@ -113,21 +97,12 @@ Digitisation Process (if born analogue)
 Creation Software (if born digital)
 Related URL
 Fruition Suggestions
-Observations
-Remark
 Future Plans 
-ParentFile
-ChildFile
-CousinFile
-RelatedFile
-Virtual Entity Status 
+Virtual Entity Status
 License (if not VE)
 
-
 -----------------
-
 IMAGE
-
 -----------------
 
 Title 
@@ -137,7 +112,6 @@ Date (of upload)
 Place (of creation)
 Filename
 Subject
-Language (main)
 Publisher
 Collection
 Size 
@@ -151,15 +125,28 @@ Analog Carrier (if born analog)
 Creation Software (if born digital)
 Related URL
 Fruition Suggestions
-Observations
-Remark
 Future Plans 
-ParentFile
-ChildFile
-CousinFile
-RelatedFile
 Virtual Entity Status
 License (if not VE)
+
+
+----------------------------------
+AURA (SUBSTANCE INDEPENDENT)
+----------------------------------
+
+Relations:
+
+#Genetic
+Descendent
+Ancestor
+
+#Semantic 
+Semantic relation 
+
+Comments:
+
+#Expansion
+Annotation
 
 
 

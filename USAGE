@@ -1,49 +1,52 @@
-Virtual Entity Alpha Minus Minus (CODENAME JAILBIRD)
-Here is a minimal set of instruction to use this simple software.
+================================================
+| Virtual Entity Alpha Minus (CODENAME MUSOCCO)|
+================================================
 
-You can Create, Edit, Expand, Scan files's soul and you can annotate genetic and semantic relations among files in their Aura. 
-To create or work on a Soul, you need to have a copy of the file in your local directory. The Soul will be stored on a database online. 
-You can retriew the same Soul from different computers, if you have a copy of the file in your local directory.
+Usage: a minimal set of instructions!
 
-Create Soul of file 'foo.ogg' :
+You can Create, Edit, Expand, Scan 'soul' and you can annotate genetic and semantic relations among files in their Aura. 
+This application can only use files in local directories, but the 'soul' is stored on a database online. 
+You can retriew the same soul from different computers, if you have a copy of the file in your local directory.
+
+#Create Soul of file 'foo.ogg' :
 
 $soul create foo.ogg
 
-Edit Soul of file 'foo.ogg' (return if you do not want to change any data):
+#Edit Soul of file 'foo.ogg' (return if you do not want to change any data):
 
 $soul edit foo.ogg
 
-Twin Soul of foo.ogg and foo.mov :
+#Twin Soul of foo.ogg and foo.mov :
 
 $soul twin foo.ogg foo.mov
 
-Check what files have Soul in current directory:
+#Check what files have Soul in current directory:
 
 $soul scan 
 
-Display Soul of <FILE> (in current directory):
+#Display Soul of <FILE> (in current directory):
 
 $soul scan  <FILE>
 
-Expand Soul of <FILE> with aura annotation:
+#Expand Soul of <FILE> with aura annotation:
 
 $soul expand  <FILE>
 
-Annotate genetic relation where <FILE1> is ancestor of <FILE2>:
+#Annotate genetic relation where <FILE1> is ancestor of <FILE2>:
 
 $soul parentize <FILE1> <FILE2>
 
-Insert information in Aura: genetic and/or semantic relations and annotations:
+#Insert information in Aura: genetic and/or semantic relations and annotations:
 
 $soul aura <FILE> 
 
-Read help file:
+#Read help file:
 
 $soul --help
 
-
-May the entity be with you!
-
+=============================
+|May the entity be with you!|
+=============================
 
 Send comments to: xname@xname.cc
 Bugs and complains: ubik@xname.cc

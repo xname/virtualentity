@@ -380,7 +380,7 @@ if __name__ == "__main__":
 		meta['future_plans'] = raw_input_field(meta, 'future_plans')
 
 		while ve_status not in ('Y', 'N'):
-			print "Virtual Entity Status ('Y' or 'N')",
+			print "Virtual Entity Status ('Y' if you don't want to claim rights on this entity, or 'N' if you want to use another license)",
 			ve_status = raw_input_field(meta, 've_status')
 			meta['ve_status'] = ve_status
 		if meta['ve_status'] == 'N':

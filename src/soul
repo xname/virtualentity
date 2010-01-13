@@ -86,13 +86,6 @@ class Options(object):
         def usage(self):
 		print """
     Welcome to Virtual Entity!
-    This is a simple software to archive and license digital files.
-
-    Use this utility to store your file's metadata in a database online,
-    so to access the information from any instance of the file.
-
-    You can also add comments on files you used, and record semantic and genetic relations among differents files. 
-    More here: http://virtualentity.org/ 
 
     Usage: soul [options] <command> ...
 
@@ -108,6 +101,19 @@ class Options(object):
     Options:
     -h, --help                  Show usage
     -t, --theory		Show theory
+
+
+    This is a simple software to archive and license digital files.
+
+    Use this utility to store your file's metadata in a database online,
+    so to access the information from any instance of the file.
+
+    You can also record semantic and genetic relations among differents files. 
+    More: http://virtualentity.org/ 
+
+
+
+
 		"""
                 sys.exit(2)
 

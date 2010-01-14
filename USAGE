@@ -44,6 +44,10 @@ $soul aura <FILE>
 
 $soul --help
 
+#Read about theory:
+
+$soul --theory
+
 =============================
 |May the entity be with you!|
 =============================

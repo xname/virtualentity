@@ -17,11 +17,15 @@ class Options(object):
 		self.debug = False
 		try:
 			opts, self.args = getopt.getopt(argv, "t", ["theory"])
+#		try:
+#			opts, self.args = getopt.getopt(argv, "v", ["vocabulary"])
 		except getopt.GetoptError:
 			self.usage()
 		for opt, arg in opts:
 			if opt in ("-t", "--theory"):
 				self.theory()
+			elif opt in ("-v", "--vocabulary"):
+				self.vocabulary()
 			elif opt in ("-h", "--help"):
 				self.usage()
 
@@ -91,28 +95,22 @@ class Options(object):
 
     Commands:
     create <FILE>               Create Soul of <FILE>
-    scan [<FILE>]               Scan for Souls in current directory or visualize soul of FILE 
-    twin <FILE1> <FILE2>        Attaches Soul of FILE2 to FILE1, where the two are identical [ex foo.mov, foo.ogg]
-    edit <FILE>                 Add metadata or edit soul metadata of FILE        
+    scan [<FILE>]               Scan for Souls in directory or visualize Soul of <FILE> 
+    twin <FILE1> <FILE2>        Twins <FILE2> to Soul of <FILE1> [ex foo.mov, foo.ogg]
+    edit <FILE>                 Add metadata or edit soul metadata of <FILE>        
     expand <FILE>               Expand Soul of <FILE> with aura annotation      
     parentize <FILE1> <FILE2>   Annotate genetic relation where <FILE1> is ancestor of <FILE2>
-    aura <FILE>			Insert information in Aura: genetic and/or semantic relations and annotations
+    aura <FILE>			Insert genetic and semantic relations and annotations
 
     Options:
     -h, --help                  Show usage
     -t, --theory		Show theory
 
+    ------------------------------------------------------------------------------------------>
 
-    This is a simple software to archive and license digital files.
+    Use this utility to set metadata and license of your digital files.
 
-    Use this utility to store your file's metadata in a database online,
-    so to access the information from any instance of the file.
-
-    You can also record semantic and genetic relations among differents files. 
-    More: http://virtualentity.org/ 
-
-
-
+    http://virtualentity.org/ 
 
 		"""
                 sys.exit(2)
@@ -126,6 +124,15 @@ class Options(object):
 #                """
 #                sys.exit(2)
 
+
+        def vocabulary(self):
+		print """
+
+     This is a test vocabulary.
+
+
+		"""
+		sys.exit(2)
 
 	def theory(self):
 		print """
@@ -437,7 +444,7 @@ if __name__ == "__main__":
 		meta['future_plans'] = raw_input_field(meta, 'future_plans')
 
 		while ve_status not in ('Y', 'N'):
-			print "Virtual Entity Status ('Y' if you don't want to claim rights on this entity, or 'N' if you want to use another license)",
+			print "Virtual Entity Status ('Y' if you want to set this entity free, or 'N' if you want to use any other license)",
 			ve_status = raw_input_field(meta, 've_status')
 			meta['ve_status'] = ve_status
 		if meta['ve_status'] == 'N':

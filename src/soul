@@ -131,48 +131,48 @@ class Options(object):
 		print """
 
 
-                       ...              
-        'c:.          ,k0l.             
-       .:0N0d;.     .cKWO,              
-         'l0NNKd'  'dXNk;               
-           .:xXN0ddONWK;                
-             ,xNMMMMMWXdccccl:'         
-       .;clldOXWMMMMMMMWWWWWWNx.        
-      .oNMMMWNKkxONWW0dox0NMMWk.        
-       :0WMW0l. .'kN0c   'OMMW0;....    
-       .oXMWk,   .oXXl   'kWMMWXKKXOc.  
-   .. .'dXMMNk,..:OWNkclkKNWWWWWMMMNk.  
-  ,kKKKXNNXXXKK00KKKK0Okxdollcco0WMWk.  
- .cXMMMNO:'...''''.....        .dWMWk.  
-  ,0WMMWO.                  ..;dKWN0l.  
-  .lKWMMXc.               ,dKK0Oxo:.    
-   .ck0KKOxl,.            .,;,.         
-       .....                            
+                           ...              
+            'c:.          ,k0l.             
+            .:0N0d;.     .cKWO,              
+              'l0NNKd'  'dXNk;               
+                .:xXN0ddONWK;                
+                  ,xNMMMMMWXdccccl:'         
+            .;clldOXWMMMMMMMWWWWWWNx.        
+           .oNMMMWNKkxONWW0dox0NMMWk.        
+            :0WMW0l. .'kN0c   'OMMW0;....    
+            .oXMWk,   .oXXl   'kWMMWXKKXOc.  
+        .. .'dXMMNk,..:OWNkclkKNWWWWWMMMNk.  
+       ,kKKKXNNXXXKK00KKKK0Okxdollcco0WMWk.  
+      .cXMMMNO:'...''''.....        .dWMWk.  
+       ,0WMMWO.                  ..;dKWN0l.  
+       .lKWMMXc.               ,dKK0Oxo:.    
+        .ck0KKOxl,.            .,;,.         
+            .....                            
                                         
     	
 
-Virtual Entity is a philosophical research starting from the assumption 
-that the concepts of authenticity, ownership, uniqueness and seriality 
-are, within the digital domain, no longer valid. In fact there is no 
-substantial difference between copy and original on the Web, and these 
-two categories are not relevant. Since any file can generate an infinite 
-number of entities identical to itself, there is no scarcity on the Net, 
-and any resource is indefinitely available. Assuming possession is related 
-to the numerical proportion between resources (objects) and potential 
-owners (subjects), then, whereas resources are not limited, the concept 
-of ownership and the idea of property become superfluous.
+    Virtual Entity is a research project (and a work of art) starting from 
+    the assumption that the concepts of authenticity, ownership, uniqueness 
+    and seriality are, within the digital domain, no longer valid. In fact 
+    there is no substantial difference between copy and original on the Web, 
+    and these two categories are not relevant. Since any file can generate an 
+    infinite number of entities identical to itself, there is no scarcity on 
+    the Net, and any resource is indefinitely available. Assuming possession 
+    is related to the numerical proportion between resources (objects) and 
+    potential owners (subjects), then, whereas resources are not limited, 
+    the concept of ownership and the idea of property become superfluous.
 
-The practical method to achieve such result is a new radical software 
-being specifically developed to release, license, and catalogue digital 
-files. This system, transforming the traditional approach towards 
-metadata, is based on the idea that any file is an independent creation 
-living its own life and experiencing various levels of transformation 
-and progressive generation (of meaning, shape, and entities) in the course 
-of its virtual existence. This way digital resources, interpreted as 
-cultural units, are considered the main actors of the web.
+    The practical method to achieve such result is a new radical software 
+    being specifically developed to release, license, and catalogue digital 
+    files. This system, transforming the traditional approach towards 
+    metadata, is based on the idea that any file is an independent creation 
+    living its own life and experiencing various levels of transformation 
+    and progressive generation (of meaning, shape, and entities) in the 
+    course of its virtual existence. This way digital resources, interpreted 
+    as cultural units, are considered the main actors of the web.
 
-If this did not confuse you enough, 
-please visit http://virtualentity.org/ 
+    If this did not confuse you enough, 
+    please visit http://virtualentity.org/ 
 		"""
 		sys.exit(2)
 

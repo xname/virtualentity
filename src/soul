@@ -489,8 +489,18 @@ if __name__ == "__main__":
 		print "You are now writing in the Aura of the Soul of " + opts.input
 
 		resp = ""
-		while (resp not in('Y','N')):
-			print "Do you want to add a descendent to this file (Y/N)?",
+		resp1 = ""
+		print "Do you want to add a descendent to this file (Y/N)?",
+		resp1 = raw_input()
+		if resp1=='Y':
+			print "Insert child filename:",
+			child = raw_input()
+				
+			print "Making " + child + " descendent of " + opts.input
+			ve.parentize(opts.input, child)	
+
+#			while (resp not in('Y', 'N')):			
+			print "Do you want to add another descendent to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
 				print "Insert child filename:",
@@ -499,10 +509,23 @@ if __name__ == "__main__":
 				print "Making " + child + " descendent of " + opts.input
 				ve.parentize(opts.input, child)
 				resp = ""
+#			else:
+			
 
 		resp = ""
-		while (resp not in('Y','N')):
-			print "Do you want to add ancestors to this file (Y/N)?",
+		resp2 = ""
+#		while (resp2 not in('Y','N')):
+		print "Do you want to add ancestors to this file (Y/N)?",
+		resp2 = raw_input()
+		if resp2=='Y':
+			print "Insert ancestor filename:",
+			parent = raw_input()
+
+			print "Making " + parent + " ancestor of " + opts.input
+			ve.parentize(parent, opts.input)
+
+#			while (resp not in('Y', 'N')):
+			print "Do you want to add another ancestors to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
 				print "Insert ancestor filename:",
@@ -513,8 +536,18 @@ if __name__ == "__main__":
 				resp = ""
 
 		resp = ""
-		while (resp not in('Y','N')):
-			print "Do you want to add a semantic relation to this file (Y/N)?",
+		resp3 = "" 
+#		while (resp not in('Y','N')):
+		print "Do you want to add a semantic relation to this file (Y/N)?",
+		resp3 = raw_input()
+		if resp3=='Y':
+			print "Insert related filename:",
+			related = raw_input()
+
+			print "Making " + related + " semantically connected to " + opts.input
+			ve.add_annotation('', opts.input, related)
+			
+			print "Do you want to add a another semantic relation to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
 				print "Insert related filename:",
@@ -522,19 +555,31 @@ if __name__ == "__main__":
 
 				print "Making " + related + " semantically connected to " + opts.input
 				ve.add_annotation('', opts.input, related)
-				resp = ""
-
+				resp= ""
+				
 		resp = ""
-		while (resp not in('Y','N')):
-		 	print "Do you want to expand soul of " + opts.input + " with annotation (Y/N)?",
-			resp =raw_input() 
-			if resp=='Y':		
-				print "Insert text:",
-                 		text = raw_input()
-                 		ve.add_annotation(text, opts.input, '')
-				resp = ""
+		resp4 = ""
+#		while (resp not in('Y','N')):
+		print "Do you want to expand soul of " + opts.input + " with annotation (Y/N)?",
+		resp4 =raw_input() 
+		if resp4=='Y':		
+			print "Insert text:",
+                 	text = raw_input()
+                 	ve.add_annotation(text, opts.input, '')
 
-		print "Aura expanded!"
+			print "Do you want to expand soul of " + opts.input + " with another annotation (Y/N)?",	
+			resp = raw_input()
+			if resp=='Y':
+				print "Insert text:",
+				text = raw_input()
+				ve.add_annotation(text, opts.input, '')
+
+		if resp1==resp2==resp3==resp4=='N':
+			print "Better a small aura than one full of garbage!" 
+		
+		else:
+			print "Aura expanded!"
+
 		print "May the Entity be with you!"
          
 

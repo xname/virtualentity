@@ -251,8 +251,8 @@ def print_status(soul, verbose, parent_verbose):
                         print "        Suggestions: " + meta['fruition_suggestions']
                         print "        Future plans: " + meta['future_plans']
                         print "        Virtual Entity Status: " + meta['ve_status']
-                        if meta['ve_status'] == 'N':
-                                print "        License: " + meta['license']
+#                        if meta['ve_status'] == 'N':
+                        print "        License: " + meta['license']
 
         if verbose:
                 annotations = ve.get_annotations_from_soul(soul)

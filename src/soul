@@ -17,8 +17,7 @@ class Options(object):
 		self.debug = False
 		try:
 			opts, self.args = getopt.getopt(argv, "t", ["theory"])
-#		try:
-#			opts, self.args = getopt.getopt(argv, "v", ["vocabulary"])
+
 		except getopt.GetoptError:
 			self.usage()
 		for opt, arg in opts:
@@ -29,12 +28,13 @@ class Options(object):
 			elif opt in ("-h", "--help"):
 				self.usage()
 
+#		cmds=('create', 'twin', 'edit', 'scan', 'expand', 'parentize', 'aura') 
+
 		if len(self.args)<1:
 			self.usage()
 		self.command = self.args[0]
 
-
-#                while len(self.args)>1:
+     		
 
 		if self.command == 'create':
 			if len(self.args)!=2:
@@ -81,9 +81,10 @@ class Options(object):
 				self.usage()
 			self.input = self.args[1]		
 
+		if (not self.command in ('create', 'scan', 'twin', 'edit', 'expand', 'parentize', 'aura')): 
 
-#                else:
-#                        self.error()
+
+         		self.error()
 
 
 
@@ -99,8 +100,8 @@ class Options(object):
     twin <FILE1> <FILE2>        Twins <FILE2> to Soul of <FILE1> [ex foo.mov, foo.ogg]
     edit <FILE>                 Add metadata or edit soul metadata of <FILE>        
     expand <FILE>               Expand Soul of <FILE> with aura annotation      
-    parentize <FILE1> <FILE2>   Annotate genetic relation where <FILE1> is ancestor of <FILE2>
-    aura <FILE>			Insert genetic and semantic relations and annotations
+    parentize <FILE1> <FILE2>   Genetic relation, <FILE1> is ancestor of <FILE2>
+    aura <FILE>			Insert relations and annotations
 
     Options:
     -h, --help                  Show usage
@@ -116,13 +117,12 @@ class Options(object):
                 sys.exit(2)
 
 
-#        def error(self):
-#                print """
-#    Command not found. Please type:
-#    soul --h
-#    and read the help file!
-#                """
-#                sys.exit(2)
+        def error(self):
+                print """
+    Command not found. Please type:
+    soul --h to read the help file!
+                """
+                sys.exit(2)
 
 
         def vocabulary(self):
@@ -178,7 +178,7 @@ class Options(object):
     course of its virtual existence. This way digital resources, interpreted 
     as cultural units, are considered the main actors of the web.
 
-    If this did not confuse you enough, 
+    If this didn't confuse you enough, 
     please visit http://virtualentity.org/ 
 		"""
 		sys.exit(2)
@@ -452,7 +452,7 @@ if __name__ == "__main__":
 			meta['license'] = raw_input_field(meta, 'license')
 		else:
 			meta['license'] = ""
-			print "Entity Liberated!"
+			print "This is a free entity living in the net."
 
 	if opts.command == 'create' and not edited_soul:
 		print "Please provide an access password for Soul (or press ENTER to leave Soul open):",
@@ -482,7 +482,8 @@ if __name__ == "__main__":
 			ve.add_image_meta(opts.input, opts.password, meta)
 		if edited_soul:
 			print "Soul updated."
-                 	print "May the Entity be with you!"				
+                
+#		 	print "May the Entity be with you!"				
 
 
 	if opts.command == 'aura':
@@ -499,7 +500,6 @@ if __name__ == "__main__":
 			print "Making " + child + " descendent of " + opts.input
 			ve.parentize(opts.input, child)	
 
-#			while (resp not in('Y', 'N')):			
 			print "Do you want to add another descendent to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
@@ -509,12 +509,10 @@ if __name__ == "__main__":
 				print "Making " + child + " descendent of " + opts.input
 				ve.parentize(opts.input, child)
 				resp = ""
-#			else:
 			
 
 		resp = ""
 		resp2 = ""
-#		while (resp2 not in('Y','N')):
 		print "Do you want to add ancestors to this file (Y/N)?",
 		resp2 = raw_input()
 		if resp2=='Y':
@@ -524,7 +522,6 @@ if __name__ == "__main__":
 			print "Making " + parent + " ancestor of " + opts.input
 			ve.parentize(parent, opts.input)
 
-#			while (resp not in('Y', 'N')):
 			print "Do you want to add another ancestors to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
@@ -537,7 +534,7 @@ if __name__ == "__main__":
 
 		resp = ""
 		resp3 = "" 
-#		while (resp not in('Y','N')):
+
 		print "Do you want to add a semantic relation to this file (Y/N)?",
 		resp3 = raw_input()
 		if resp3=='Y':
@@ -547,7 +544,7 @@ if __name__ == "__main__":
 			print "Making " + related + " semantically connected to " + opts.input
 			ve.add_annotation('', opts.input, related)
 			
-			print "Do you want to add a another semantic relation to this file (Y/N)?",
+			print "Do you want to add another semantic relation to this file (Y/N)?",
 			resp = raw_input()
 			if resp=='Y':
 				print "Insert related filename:",
@@ -559,7 +556,7 @@ if __name__ == "__main__":
 				
 		resp = ""
 		resp4 = ""
-#		while (resp not in('Y','N')):
+
 		print "Do you want to expand soul of " + opts.input + " with annotation (Y/N)?",
 		resp4 =raw_input() 
 		if resp4=='Y':		
@@ -575,12 +572,12 @@ if __name__ == "__main__":
 				ve.add_annotation(text, opts.input, '')
 
 		if resp1==resp2==resp3==resp4=='N':
-			print "Better a small aura than one full of garbage!" 
+			print "Better a small aura than a full of garbage one!" 
 		
 		else:
 			print "Aura expanded!"
 
-		print "May the Entity be with you!"
+			print "May the Entity be with you!"
          
 
 

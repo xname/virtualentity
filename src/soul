@@ -83,7 +83,6 @@ class Options(object):
 
 		if (not self.command in ('create', 'scan', 'twin', 'edit', 'expand', 'parentize', 'aura')): 
 
-
          		self.error()
 
 
@@ -95,11 +94,11 @@ class Options(object):
     Usage: soul [options] <command> ...
 
     Commands:
-    create <FILE>               Create Soul of <FILE>
-    scan [<FILE>]               Scan for Souls in directory or visualize Soul of <FILE> 
+    create <FILE>               Create soul of <FILE>
+    scan [<FILE>]               Scan  directory or visualize soul of <FILE> 
     twin <FILE1> <FILE2>        Twins <FILE2> to Soul of <FILE1> [ex foo.mov, foo.ogg]
     edit <FILE>                 Add metadata or edit soul metadata of <FILE>        
-    expand <FILE>               Expand Soul of <FILE> with aura annotation      
+    expand <FILE>               Expand soul of <FILE> with aura annotation      
     parentize <FILE1> <FILE2>   Genetic relation, <FILE1> is ancestor of <FILE2>
     aura <FILE>			Insert relations and annotations
 
@@ -263,12 +262,12 @@ def print_status(soul, verbose, parent_verbose):
         if len(cousins)>0:
                 for cousin in cousins:
                         if parent_verbose:
-                                print "----------------------------------------------"
-                                print "        -> Have the following semantic relation:"
-                                print "----------------------------------------------"
-                                print_status(cousin, True, False)
-                                print "----------------------------------------------"
-                        else:
+#                                print "------------------------------------------------"
+#                                print "        -> Have the following semantic relation:"
+#                                print "------------------------------------------------"
+#                                print_status(cousin, True, False)
+#                                print "----------------------------------------------"
+#                        else:
                                 parent_meta = ve.get_meta_from_soul(cousin)
                                 print "        -> Have the following semantic relation:"
                                 print "            Title: " + parent_meta['title']
@@ -278,28 +277,28 @@ def print_status(soul, verbose, parent_verbose):
         if len(parents)>0:
                 for parent in parents:
                         if parent_verbose:
-                                print "----------------------------------------------"
-                                print "        -> Have the following ancestor:"
-                                print "----------------------------------------------"
-                                print_status(parent, True, False)
-                                print "----------------------------------------------"
-                        else:
+#                                print "------------------------------------------------"
+#                                print "        -> Have the following ancestor:"
+#                                print "------------------------------------------------"
+#                                print_status(parent, True, False)
+#                                print "----------------------------------------------"
+#                        else:
                                 parent_meta = ve.get_meta_from_soul(parent)
-                                print "        -> Have the following parent soul:"
+                                print "        -> Have the following parent soul (ancestor):"
                                 print "            Title: " + parent_meta['title']
                                 print "            Author: " + parent_meta['author']
         children = ve.get_children_from_soul(soul)
         if len(children)>0:
                 for child in children:
                         if parent_verbose:
-                                print "----------------------------------------------"
-                                print "        -> Have the following descendent:"
-                                print "----------------------------------------------"
-                                print_status(child, True, False)
-                                print "----------------------------------------------"
-                        else:
+#                                print "------------------------------------------------"
+#                                print "        -> Have the following descendent:"
+#                                print "------------------------------------------------"
+#                                print_status(child, True, False)
+#                                print "----------------------------------------------"
+#                        else:
                                 child_meta = ve.get_meta_from_soul(child)
-                                print "        -> Have the following child soul:"
+                                print "        -> Have the following child soul (descendent):"
                                 print "            Title: " + child_meta['title']
                                 print "            Author: " + child_meta['author']
 

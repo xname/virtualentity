@@ -443,26 +443,26 @@ if __name__ == "__main__":
 		meta['future_plans'] = raw_input_field(meta, 'future_plans')
 
 		while ve_status not in ('Y', 'N'):
-			print "Virtual Entity Status ('Y' if you want to set this entity free, or 'N' if you want to use any other license)",
+			print "Virtual Entity Status ('Y' if Virtual Entity, or 'N' if you wish to use another license)",
 			ve_status = raw_input_field(meta, 've_status')
 			meta['ve_status'] = ve_status
 		if meta['ve_status'] == 'N':
 			print "License",
 			meta['license'] = raw_input_field(meta, 'license')
 		else:
-			meta['license'] = ""
-			print "This is a free entity living in the net."
+			meta['license'] = "Virtual Entity"
+			print "This is a Virtual Entity."
 
 	if opts.command == 'create' and not edited_soul:
 		print "Please provide an access password for Soul (or press ENTER to leave Soul open):",
 		opts.password = raw_input()
 
-	# ...and create Soul in database.
+	# ...and create soul in database.
 	if opts.command == 'create':
 		try:
 			if not edited_soul:
 				ve.create(opts.input, opts.password)
-				print "Soul Created."
+				print "Soul created."
 		except IOError, (errno, strerror):
 			print "Error: %s" % (strerror)
 		except VeDBException, (errno, strerror):

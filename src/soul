@@ -168,14 +168,15 @@ class Options(object):
     potential owners (subjects), then, whereas resources are not limited, 
     the concept of ownership and the idea of property become superfluous.
 
-    The practical method to achieve such result is a new radical software 
-    being specifically developed to release, license, and catalogue digital 
-    files. This system, transforming the traditional approach towards 
-    metadata, is based on the idea that any file is an independent creation 
-    living its own life and experiencing various levels of transformation 
-    and progressive generation (of meaning, shape, and entities) in the 
-    course of its virtual existence. This way digital resources, interpreted 
-    as cultural units, are considered the main actors of the web.
+    The practical method to achieve such result is this simple application 
+    specifically developed to release, license, and catalogue digital files. 
+    This system, transforming the traditional approach towards metadata, 
+    which are here stored on a database online (and not in the file's header), 
+    is based on the idea that any file is an independent creation living its 
+    own life and experiencing various levels of transformation and progressive 
+    generation (of meaning, shape, and entities) in the course of its virtual 
+    existence. This way digital resources, interpreted as cultural units, are 
+    considered the main actors of the web.
 
     If this didn't confuse you enough, 
     please visit http://virtualentity.org/ 

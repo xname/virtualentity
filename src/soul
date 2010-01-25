@@ -485,6 +485,7 @@ if __name__ == "__main__":
                 
 #		 	print "May the Entity be with you!"				
 
+# ...whenever a body is by nature divisible through and through, whether by bisection or...
 
 	if opts.command == 'aura':
 		print "You are now writing in the Aura of the Soul of " + opts.input

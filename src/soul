@@ -105,7 +105,7 @@ class Options(object):
     Options:
     -h, --help                  Show usage
     -t, --theory		Show theory
-
+    -v, --vocabulary		Show vocabulary
     ------------------------------------------------------------------------------------------>
 
     Use this utility to set metadata and license of your digital files.

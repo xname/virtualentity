@@ -119,7 +119,7 @@ class Options(object):
         def error(self):
                 print """
     Command not found. Please type:
-    soul --h to read the help file!
+    soul --help to read the help file!
                 """
                 sys.exit(2)
 

@@ -16,14 +16,14 @@ class Options(object):
 		self.input = None
 		self.debug = False
 		try:
-			opts, self.args = getopt.getopt(argv, "t", ["theory"])
+			opts, self.args = getopt.getopt(argv, "tv", ["theory", "vocabulary"])
 
 		except getopt.GetoptError:
 			self.usage()
 		for opt, arg in opts:
 			if opt in ("-t", "--theory"):
 				self.theory()
-			elif opt in ("-v", "--vocabulary"):
+			if opt in ("-v", "--vocabulary"):
 				self.vocabulary()
 			elif opt in ("-h", "--help"):
 				self.usage()
@@ -126,11 +126,18 @@ class Options(object):
 
         def vocabulary(self):
 		print """
-
-     This is a test vocabulary.
-
-
-		"""
+     Virtual Entity's terminology:
+     
+     soul = metadata set of a file
+     aura = space around the soul where file's relations and user's annotations are stored
+     substance = if a file is an 'audio', 'video', 'text' or 'image' file
+     twin = two files are twins when they have the same content in a different format or compression 
+     parent = a file which was used in another file (also called 'ancestor')
+     child = a file which uses another file is a 'child' (or a descendent) of it
+     natural born digital = a file which was created inside a computer using material created inside a computer
+     natural born analogue = a file which was made using material that has an analogue relation with the real world, and a carrier
+     native file = the first copy (or original, it's the same) of a file which reaches the Net 
+      		"""
 		sys.exit(2)
 
 	def theory(self):

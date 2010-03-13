@@ -209,20 +209,20 @@ def raw_input_field(meta, key):
 # Function that prints soul status for infile
 def print_status(soul, verbose, parent_verbose):
         if soul.has_key('alias_id'):
-                print "        -> Is an alias of soul with id " + soul['id']
+                print "        -> Soul detected"
         else:
-                print "        -> Have a soul with id " + soul['id']
+                print "        -> Twin soul detected"
 
         if soul['substance']:
                 meta = ve.get_meta_from_soul(soul)
                 if soul['substance']=='T':
-                        print "        -> Have the following text metadata"
+                        print "        -> Text metadata"
                 if soul['substance']=='A':
-                        print "        -> Have the following audio metadata"
+                        print "        -> Audio metadata"
                 if soul['substance']=='V':
-                        print "        -> Have the following video metadata"
+                        print "        -> Video metadata"
                 if soul['substance']=='I':
-                        print "        -> Have the following image metadata"
+                        print "        -> Image metadata"
 
                 print "        Title: " + meta['title']
                 print "        Author: " + meta['author']

@@ -442,4 +442,6 @@ class VeDB(object):
 			res.append( self.get_soul_by_id(i[0]) )
 		return res
 
+# Everything new is born out of the death of something old.
+
 # vi:ts=4

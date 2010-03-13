@@ -1,4 +1,4 @@
-Virtual Entity Alpha Minus - CODENAME MUSOCCO - December 2009
+Virtual Entity Alpha Minus - CODENAME MUSOCCO - March 2010
 
                        ...              
         'c:.          ,k0l.             
@@ -22,12 +22,20 @@ Virtual Entity Alpha Minus - CODENAME MUSOCCO - December 2009
 
 
 New in this release:
-- further changes in metadata sets 
-- implementation of new metadata sets in the application
+- implementation new metadata sets
 - install script
 - add libreadline for history retrieving in interactive shell
+- non verbose multiple relations scan
+- command aura for relations and annotations 
+- error message for command not found
+- option vocabulary and option theory
+- virtualentity as license in metadata field
+- man page
+- improve dialogue panel 
+- general bugfix
+- philosophical injections 
+- details 
 
 Report Bugs to:
 root@xname.cc
-
 

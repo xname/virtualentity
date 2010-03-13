@@ -1,13 +1,17 @@
 TODO (Virtual Entity Alpha Minus - CODENAME MUSOCCO)
 
+- macosx support
 - security problems: ve-db and ve-engine are running in client mode. they will have to be server.
 - cache MD5 for fast retrival (get soul)
-- tab completion
+- tab completion of soul command line option
 - working with url and not only in local directory
-- error management
+- further error management
 - adding password to open Soul
 - add possibility to delete relations
 - add tags as a metadata field
 - clean relations
 - web interface for Soul's creation
 - graphical mapping of relations 
+- graphical division among soul and aura
+- interrogating the database (strings)
+- fluxus visualization system

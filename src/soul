@@ -212,7 +212,7 @@ def print_status(soul, verbose, parent_verbose):
                 print "        -> Soul detected" 
         else:
                 print "        -> Soul detected" 
-# add secret command to display soul id and check better the aliasing
+# todo: add secret command to display soul id and check better the aliasing
 
 
         if soul['substance']:
@@ -225,7 +225,9 @@ def print_status(soul, verbose, parent_verbose):
                         print "        -> Video metadata"
                 if soul['substance']=='I':
                         print "        -> Image metadata"
-
+		if verbose:
+			print "\n"
+#		print "        ................................."
                 print "        Title: " + meta['title']
                 print "        Author: " + meta['author']
                 if verbose:
@@ -268,9 +270,15 @@ def print_status(soul, verbose, parent_verbose):
 	                        print "        License: " + meta['license']
 			if meta['ve_status'] == 'Y':
 			        print "        License: Virtual Entity"
-
+			print "\n"
+#		else: 
+#			print "\n"
+#			print "        ................................."
+		
 
         if verbose:
+		print "          -> Aura detected"
+#                print "        ................................."
                 annotations = ve.get_annotations_from_soul(soul)
                 for ann in annotations:
                         print "        Note inserted " + ann['date'] + ": " + ann['text']
@@ -318,7 +326,7 @@ def print_status(soul, verbose, parent_verbose):
                                 print "        -> Descendent:"
                                 print "            Title: " + child_meta['title']
                                 print "            Author: " + child_meta['author']
-
+	print "\n"
 
 
 # Main program (in girum imus nocte et consumimur igni)
@@ -603,7 +611,7 @@ if __name__ == "__main__":
 
 
         if opts.command == 'scan':
-		print "Scanning ",
+		print "\nScanning ",
 		if opts.input:
 			print "\n",
 			soul = ve.get_soul(opts.input)
@@ -613,7 +621,7 @@ if __name__ == "__main__":
 				print opts.input + ":"
 				print_status(soul, True, True)
 		else:
-			print "directory for souls:"
+			print "directory for souls:\n"
 			for infile in glob.glob('*'):
 				if os.path.isfile(infile):
 					soul = ve.get_soul(infile)

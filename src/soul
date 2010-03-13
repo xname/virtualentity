@@ -587,7 +587,7 @@ if __name__ == "__main__":
 				ve.add_annotation(text, opts.input, '')
 
 		if resp1==resp2==resp3==resp4=='N':
-			print "Better a small aura than a full of garbage one!" 
+			print "Better a small aura than one full of garbage." 
 		
 		else:
 			print "Aura expanded!"
@@ -635,6 +635,12 @@ if __name__ == "__main__":
 		print "Insert text:",
 		text = raw_input()
 		ve.add_annotation(text, opts.input, opts.input2)
+
+
+# Digital artificial world is structured by specific rules that are somewhat different from those expressed 
+# and manifested in the physical world we normally experience. One relevant difference is the definition of identity … 
+# If software, as source code, is considered text, an executable is something more malicious, composed, an ‘organon’ 
+# activating a different functioning. Be software a daemon, or a polumetis spirit, it is not a simple entity.
 
 # vi:ts=4
 

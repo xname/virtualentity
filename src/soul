@@ -284,7 +284,7 @@ def print_status(soul, verbose, parent_verbose):
 #                                print "----------------------------------------------"
 #                        else:
                                 parent_meta = ve.get_meta_from_soul(cousin)
-                                print "        -> Have the following semantic relation:"
+                                print "        -> Semantic relation:"
                                 print "            Title: " + parent_meta['title']
                                 print "            Author: " + parent_meta['author']
 
@@ -299,7 +299,7 @@ def print_status(soul, verbose, parent_verbose):
 #                                print "----------------------------------------------"
 #                        else:
                                 parent_meta = ve.get_meta_from_soul(parent)
-                                print "        -> Have the following parent soul (ancestor):"
+                                print "        -> Ancestor:"
                                 print "            Title: " + parent_meta['title']
                                 print "            Author: " + parent_meta['author']
         children = ve.get_children_from_soul(soul)
@@ -313,7 +313,7 @@ def print_status(soul, verbose, parent_verbose):
 #                                print "----------------------------------------------"
 #                        else:
                                 child_meta = ve.get_meta_from_soul(child)
-                                print "        -> Have the following child soul (descendent):"
+                                print "        -> Descendent:"
                                 print "            Title: " + child_meta['title']
                                 print "            Author: " + child_meta['author']
 

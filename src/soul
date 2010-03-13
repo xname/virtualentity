@@ -209,9 +209,9 @@ def raw_input_field(meta, key):
 # Function that prints soul status for infile
 def print_status(soul, verbose, parent_verbose):
         if soul.has_key('alias_id'):
-                print "        -> Soul detected"
-        else:
-                print "        -> Twin soul detected"
+                print "        -> Soul detected" 
+#        else:
+#                print "        -> Twin soul detected" 
 
         if soul['substance']:
                 meta = ve.get_meta_from_soul(soul)

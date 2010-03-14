@@ -6,7 +6,7 @@ Usage: a minimal set of instructions!
 
 You can Create, Edit, Expand, Scan 'soul' and you can annotate genetic and semantic relations among files in their Aura. 
 This application can only use files in local directories, but the 'soul' is stored on a database online. 
-You can retriew the same soul from different computers, if you have a copy of the file in your local directory.
+You can retrieve the same soul from different computers, if you have a copy of the file in your local directory.
 
 #Create Soul of file 'foo.ogg' :
 

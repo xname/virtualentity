@@ -42,7 +42,8 @@ $ sudo ./install.sh
 
 #####################################################################
 #### Un-install Virtual Entity! #####################################
-$ sudo rm -rf /usr/share/soul /usr/bin/soul ;echo 'gone'
+$ sudo rm -rf /usr/share/soul /usr/bin/soul
+               /usr/share/man/man1/soul.1.gz ; echo 'gone'
 # are you sure you want to do it?
 #####################################################################
 

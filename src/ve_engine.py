@@ -1,8 +1,7 @@
 #!/usr/bin/python
 
 from ve_db import VeDB, VeDBException
-
-import hashlib
+import sys, hashlib, urllib
 
 class Ve(object):
 	def __init__(self):
@@ -13,7 +12,7 @@ class Ve(object):
 
 	def create(self, infile, password):
 		md5sum = self.md5file(infile)
-		self.db.insert_soul(md5sum, infile, password)
+		self.db.insert_soul(md5sum, (infile.split("/")[-1]), password)
 
 	def get_soul(self, infile):
 		'''Retrieve soul information for a file'''
@@ -31,16 +30,21 @@ class Ve(object):
 
 	def md5file(self, infile):
 		'''Returns an md5 hash for an object with read() method.'''
-		fobj = file(infile, 'rb')
-		m = hashlib.md5()
-		while True:
-			d = fobj.read(8096)
-			if not d:
-				break
-			m.update(d)
-		fobj.close()
-		return m.hexdigest()
-
+		try:
+			fobj = urllib.urlopen(infile)
+			m = hashlib.md5()
+			while True:
+				d = fobj.read()
+				if not d:
+					break
+				m.update(d)
+				fobj.close()
+				print m.hexdigest()
+				return m.hexdigest()
+		except IOError:
+			print "Error opening file %s" % (infile,)
+			sys.exit()
+			
 	def add_text_meta(self, infile, password, meta):
 		soul = self.get_soul(infile)
 		if not soul:

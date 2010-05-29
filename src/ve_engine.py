@@ -39,7 +39,6 @@ class Ve(object):
 					break
 				m.update(d)
 				fobj.close()
-				print m.hexdigest()
 				return m.hexdigest()
 		except IOError:
 			print "Error opening file %s" % (infile,)

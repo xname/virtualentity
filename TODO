@@ -1,10 +1,9 @@
-TODO (Virtual Entity Alpha Minus - CODENAME MUSOCCO)
+TODO (Virtual Entity Alpha - CODENAME OLIVER)
 
 - macosx support
 - security problems: ve-db and ve-engine are running in client mode. they will have to be server.
 - cache MD5 for fast retrival (get soul)
 - tab completion of soul command line option
-- working with url and not only in local directory
 - further error management
 - adding password to open Soul
 - add possibility to delete relations

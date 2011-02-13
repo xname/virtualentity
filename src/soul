@@ -16,15 +16,15 @@ class Options(object):
 		self.input = None
 		self.debug = False
 		try:
-			opts, self.args = getopt.getopt(argv, "tv", ["theory", "vocabulary"])
+			opts, self.args = getopt.getopt(argv, "td", ["theory", "dictionary"])
 
 		except getopt.GetoptError:
 			self.usage()
 		for opt, arg in opts:
 			if opt in ("-t", "--theory"):
 				self.theory()
-			if opt in ("-v", "--vocabulary"):
-				self.vocabulary()
+			if opt in ("-d", "--dictionary"):
+				self.dictionary()
 			elif opt in ("-h", "--help"):
 				self.usage()
 
@@ -105,7 +105,7 @@ class Options(object):
     Options:
     -h, --help                  Show usage
     -t, --theory		Show theory
-    -v, --vocabulary		Show vocabulary
+    -d, --dictionary		Show dictionary
     ------------------------------------------------------------------------------------------>
 
     Use this utility to set metadata and license of your digital files.
@@ -124,7 +124,7 @@ class Options(object):
                 sys.exit(2)
 
 
-        def vocabulary(self):
+        def dictionary(self):
 		print """
      Virtual Entity's terminology:
      

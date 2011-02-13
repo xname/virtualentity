@@ -96,7 +96,7 @@ class Options(object):
     Commands:
     create <FILE>               Create soul of <FILE>
     scan [<FILE>]               Scan  directory or visualize soul of <FILE> 
-    twin <FILE1> <FILE2>        Twins <FILE2> to Soul of <FILE1> [ex foo.mov, foo.ogg]
+    twin <FILE1> <FILE2>        Twins <FILE1> to Soul of <FILE2> [ex foo.mov, foo.ogg]
     edit <FILE>                 Add metadata or edit soul metadata of <FILE>        
     expand <FILE>               Expand soul of <FILE> with aura annotation      
     parentize <FILE1> <FILE2>   Genetic relation, <FILE1> is ancestor of <FILE2>

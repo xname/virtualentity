@@ -1,5 +1,5 @@
 ####################################################################
-####Virtual Entity Alpha Minus (CODENAME MUSOCCO) - INSTALL#########
+###### Virtual Entity Alpha  (CODENAME OLIVER) - INSTALL ###########
 ####################################################################
 
 To use Virtual Entity you need to have the following:
@@ -17,7 +17,7 @@ sudo apt-get install python-mysqldb
 (in this case you have to modify the code: 
 substitute db.virtualentity.org with localhost 127.0.0.1)
 
-$ sudo apt-get install mysql-server apache2 phpmyadmin python-mysqldb 
+$ sudo apt-get install mysql-server apache2 phpmyadmin  
 
 ####################################################################
 ##### Get Virtual Entity! ##########################################
@@ -38,6 +38,7 @@ Change permissions to the install script (maybe not needed)
 $ chmod 755 install.sh
 Execute:
 $ sudo ./install.sh
+
 #####################################################################
 
 #####################################################################
@@ -49,7 +50,27 @@ $ sudo rm -rf /usr/share/soul /usr/bin/soul
 
 #Macosx:
 Virtual Entity works on old PPC, and on Mac-Intel.
-Detailed instructions coming soon. Installation not straightforward.
+Steps:
+1. Prepare the architecture/environment:
+- install the package 'Developer Tools' from Apple installation disc
+- install Mac Ports
+http://www.macports.org/install.php
+- install Fink 
+http://www.finkproject.org/download/index.php?phpLang=en
+2. Get the applications you need:
+- install MacPython
+http://www.python.org/ftp/python/2.4.3/Universal-MacPython-2.4.3-2006-04-07.dmg
+- install MySQL
+$ sudo fink install mysql-unified
+$ sudo fink --use-binary-dist install mysql15-dev
+- install Python-Mysql
+$ sudo port install py25-mysql
+3. Install Virtual Entity
+$ cd virtualentity
+- Change permissions to the install script (maybe not needed)
+$ chmod 755 install.sh
+- Execute:
+$ sudo ./install.sh
 
 #Winblows:
 Sorry, there is no possibility to work on windows.

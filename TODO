@@ -1,17 +1,20 @@
 TODO (Virtual Entity Alpha - CODENAME OLIVER)
 
-- macosx support
+- macosx support x
+- macosx path in soul and git move soul to soul.py
 - security problems: ve-db and ve-engine are running in client mode. they will have to be server.
 - cache MD5 for fast retrival (get soul)
-- tab completion of soul command line option
+- tab completion of soul command line option (zsh)
 - further error management
 - adding password to open Soul
 - add possibility to delete relations
-- add tags as a metadata field
+- add tags in metadata field
 - clean relations
-- web interface for Soul's creation
+- divide metadata in two sections (core plus additional)
+- add question 'edit aura' at the and of edit and 'write aura' at the end of create
+- web interface for Soul's creation x
 - graphical mapping of relations 
 - graphical division among soul and aura
 - soul visualization
 - interrogating the database (strings)
-- fluxus visualization system
+- fluxus visualization system x

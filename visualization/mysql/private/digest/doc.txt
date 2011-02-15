@@ -1,0 +1,178 @@
+----------------------------------------------------------------------
+  _Digest_                                         Jens Axel Søgaard
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+HISTORY
+----------------------------------------------------------------------
+2007-feb-03  Release 1.0
+ - bytes->hex-string
+ - make-digest-context, init-context, update-context
+ - final-context->bytes, final-context->hex-string
+ - bytes-digest, digest, bytes-digest-port digest-port
+
+2007-feb-18  Release 1.1
+ - added ability to calculate message digest of
+   part of a byte string. 
+   Specifically: added offsets and lengths to update-context
+   and the various named digest functions such as md5, md5-bytes, etc.
+   
+2007-mar-10  Release 1.2
+ - applied patch from Dimitris Vyzovitis which
+   fixes bugs in the *-bytes version.
+ - added comprehensive test suite
+ - fixed md4 bug caught by the test suite
+
+----------------------------------------------------------------------
+INTRODUCTION
+----------------------------------------------------------------------
+
+This library provides bindings to the message digest algorithms
+in libcrypto. The supported message digests are as follows:
+ 
+  _md2_  _md4_  _md5_ _sha_ _sha1_ _ripemd160_
+
+Functions are provided to calculate the message digest for both
+byte strings and ports. Furthermore there is support for incremental
+calculation.
+
+Libcrypto is part of the normal distribution of PLT Scheme.
+
+----------------------------------------------------------------------
+MESSAGE DIGEST OF BYTE STRINGS
+----------------------------------------------------------------------
+
+> md2 : bytes [[offset] length] -> string
+> md4 : bytes [[offset] length] -> string
+> md5 : bytes [[offset] length] -> string
+> sha : bytes [[offset] length] -> string
+> sha1 : bytes [[offset] length] -> string
+> ripemd160 : bytes [[offset] length] -> string
+
+These functions receive a byte string and returns a string
+with each byte represented as two hexadecimal digits:
+
+  > (require (planet "digest.ss" ("soegaard" "digest.plt" 1 1)))
+  > (md5 #"abc")
+  "900150983cd24fb0d6963f7d28e17f72"
+  
+Given two arguments bytes and length the digest
+of the first length bytes is found.
+
+Given three arguments the digest of the bytes 
+  (bytes-ref bytes offset)
+  (bytes-ref bytes (+ offset 1))
+  ...
+  (bytes-ref bytes (+ offset length -1))
+is found.
+
+  > (md5 #"345")
+  "d81f9c1be2e08964bf9f24b15f0e4900"
+  > (md5 #"34567" 3)
+  "d81f9c1be2e08964bf9f24b15f0e4900"
+  > (md5 #"123456" 2 3)
+  "d81f9c1be2e08964bf9f24b15f0e4900"
+  
+
+> md2-bytes : bytes [[offset] length] -> bytes
+> md4-bytes : bytes [[offset] length] -> bytes
+> md5-bytes : bytes [[offset] length] -> bytes
+> sha-bytes : bytes [[offset] length] -> bytes
+> sha1-bytes : bytes [[offset] length] -> bytes
+> ripemd160 : : bytes [[offset] length] -> bytes
+
+Same as the above functions, but return a byte string
+containing the hash value instead of a string.
+
+  > (md5-bytes #"abc")
+  #"\220\1P\230<\322O\260\326\226?}(\341\177r"
+
+
+> bytes->hex-string : bytes -> string 
+
+Converts a message digest represented as a byte string
+into a hexadecimal string.
+
+  > (bytes->hex-string (md5-bytes #"abc"))
+  "900150983cd24fb0d6963f7d28e17f72"
+
+----------------------------------------------------------------------
+GENERAL MESSAGE DIGEST
+----------------------------------------------------------------------
+
+> digest : bytes symbol -> string
+> bytes-digest : bytes symbol -> bytes
+
+These functions calculates the message digest of the first argument,
+using the algorithm indicated by the symbol.
+
+  > (digest #"abc" 'md5)
+  "900150983cd24fb0d6963f7d28e17f72"
+  > (digest #"abc" 'sha1)
+  "a9993e364706816aba3e25717850c26c9cd0d89d"
+
+
+> digest-port : port symbol -> string
+> bytes-digest-port : port symbol -> bytes
+
+Calculates the message digest of the bytes produces
+by reading from the port until the eof-object is reached.
+
+  > (digest-port (open-input-string "abc") 'md5)
+  "900150983cd24fb0d6963f7d28e17f72"
+
+----------------------------------------------------------------------
+INCREMENTAL CALCULATION OF A MESSAGE DIGEST
+----------------------------------------------------------------------
+
+> make-digest-context : symbol -> context
+> init-context : context ->
+> update-context : context bytes [[offset] length] -> #void
+> final-context->bytes : context -> bytes
+> final-contxt->hex-string : context -> string
+
+These functions provide the interface to the incremental
+calculation of a message digest.
+
+make-digest-context makes and initializes a new 
+message digest context. The function update-context
+is called repeatedly with the bytes to be digested.
+When all bytes have been digested, either final-context->bytes
+or final-context->hex-string is called to calculate the
+final result.
+
+  > (define c (make-digest-context 'md5))
+  > (update-context c #"a")
+  > (update-context c #"b")
+  > (update-context c #"c")
+  > (final-context->hex-string c)
+  "900150983cd24fb0d6963f7d28e17f72"
+
+The initialization routine init-context makes it
+possible to reuse the digest context:
+
+  > (init-context c)
+  > (update-context c #"a")
+  > (final-context->hex-string c)
+  "0cc175b9c0f1b6a831c399e269772661"
+
+And it even works:
+
+  > (md5 #"a")
+  "0cc175b9c0f1b6a831c399e269772661"
+
+The update-context function has three forms:
+
+  (update-context context bytes)
+     update context with all bytes in bytes
+  (update-context context bytes length)
+     update context with the first length bytes of bytes
+  (update-context context bytes offset length)
+     skip the first offset bytes of bytes, and 
+     then update context with the following length bytes
+
+----------------------------------------------------------------------
+KEYWORDS
+----------------------------------------------------------------------
+
+Keywords: _message_ _digest_ _hash_ _hashing_ _libcrypto_

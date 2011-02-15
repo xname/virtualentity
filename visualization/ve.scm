@@ -1,3 +1,5 @@
+; virtual entity visualization 
+
 (require "vedb.ss")
 
 (clear)

@@ -338,314 +338,318 @@ if __name__ == "__main__":
 		sys.exit(1)	
 
 
-	# Get Soul information interactively from console...
-	if opts.command == 'create':
-		print "Initialising Soul for " + opts.input + "."
+	try:
 
-	if opts.command == 'edit' or opts.command == 'create':
-		edited_soul = ve.get_soul(opts.input)
-		if edited_soul:
-			if not ve.check_ownership(edited_soul, ""):
-				print "Soul exists. Please insert password:",
-				opts.password = raw_input()
-				if not ve.check_ownership(edited_soul, opts.password):
-					print "Wrong password. Access denied."
-					sys.exit(0)
+		# Get Soul information interactively from console...
+		if opts.command == 'create':
+			print "Initialising Soul for " + opts.input + "."
+
+		if opts.command == 'edit' or opts.command == 'create':
+			edited_soul = ve.get_soul(opts.input)
+			if edited_soul:
+				if not ve.check_ownership(edited_soul, ""):
+					print "Soul exists. Please insert password:",
+					opts.password = raw_input()
+					if not ve.check_ownership(edited_soul, opts.password):
+						print "Wrong password. Access denied."
+						sys.exit(0)
+				else:
+					print "This Soul is open!"
+					print "Please enter new password (or press ENTER to leave Soul open):",
+					opts.password = raw_input()
+					ve.change_soul_password(edited_soul, opts.password)
+					
+				meta = ve.get_meta_from_soul(edited_soul)
 			else:
-				print "This Soul is open!"
-				print "Please enter new password (or press ENTER to leave Soul open):",
-				opts.password = raw_input()
-				ve.change_soul_password(edited_soul, opts.password)
-				
-			meta = ve.get_meta_from_soul(edited_soul)
-		else:
-			meta = { }
+				meta = { }
 
-		natural_born = ""
-		color = ""
-		ve_status = ""
+			natural_born = ""
+			color = ""
+			ve_status = ""
 
-		if not edited_soul:
-			substance = ""
-			while (not substance in ('text', 'audio', 'video', 'image')):
-				print "Substance [text, audio, video, image]:",
-				substance = raw_input()
-			print "Define " + substance + " Soul."
-		else:
-			substance = edited_soul['substance']
-			if substance=='T': substance='text'
-			if substance=='A': substance='audio'
-			if substance=='V': substance='video'
-			if substance=='I': substance='image'
-			print "Define " + substance + " soul."
-
-		print "Title",
-		meta['title'] = raw_input_field(meta, 'title')
-		print "Author",
-		meta['author'] = raw_input_field(meta, 'author')
-		print "Year (of creation)",
-		meta['year_of_creation'] = raw_input_field(meta, 'year_of_creation')
-		print "Date (of upload) (format: YYYY-DD-MM)",
-		meta['date_of_upload'] = raw_input_field(meta, 'date_of_upload')
-		print "Place (of creation)",
-		meta['place_of_creation'] = raw_input_field(meta, 'place_of_creation')
-		print "Subject",
-		meta['subject'] = raw_input_field(meta, 'subject')
-		if substance != 'image':
-			print "Language (main)",
-			meta['language'] = raw_input_field(meta, 'language')
-		print "Publisher",
-		meta['publisher'] = raw_input_field(meta, 'publisher')
-		print "Collection",
-		meta['collection'] = raw_input_field(meta, 'collection')
-
-		if substance == 'text':
-			print "Pages",
-			meta['pages'] = raw_input_field(meta, 'pages')
-			print "First edition year",
-			meta['first_edition_year'] = raw_input_field(meta, 'first_edition_year')
-			print "ISBN",
-			meta['isbn'] = raw_input_field(meta, 'isbn')
-		if substance == 'audio':
-			print "Duration",
-			meta['duration'] = raw_input_field(meta, 'duration')
-		if substance == 'video':
-			print "Duration",
-			meta['duration'] = raw_input_field(meta, 'duration')
-		if substance == 'image':
-			print "Size",
-			meta['size'] = raw_input_field(meta, 'size')
-
-		print "Keywords",
-		meta['keywords'] = raw_input_field(meta, 'keywords')
-		print "Type/Genre",
-		meta['type'] = raw_input_field(meta, 'type')
-
-		while natural_born not in ('D', 'A'):
-			print "Natural Born ('D' for digital or 'A' for analogue)",
-			natural_born = raw_input_field(meta, 'natural_born')
-			meta['natural_born'] = natural_born
-		if meta['natural_born'] == 'A':
-			print "Carrier",
-			meta['carrier'] = raw_input_field(meta, 'carrier')
-			print "Digitisation Process",
-			meta['digitisation_process'] = raw_input_field(meta, 'digitisation_process')
-			meta['creation_software'] = ""
-		else:
-			print "Creation software",
-			meta['creation_software'] = raw_input_field(meta, 'creation_software')
-			meta['carrier'] = ""
-			meta['digitisation_process'] = ""
-
-		if substance == 'audio':
-			print "Short content",
-			meta['short_content'] = raw_input_field(meta, 'short_content')
-			print "Sound (stereo/mono)",
-			meta['sound'] = raw_input_field(meta, 'sound')
-
-		if substance == 'video':
-			print "System (PAL, NTSC)",
-			meta['system'] = raw_input_field(meta, 'system')
-			print "Short content",
-			meta['short_content'] = raw_input_field(meta, 'short_content')
-			print "Sound",
-			meta['sound'] = raw_input_field(meta, 'sound')
-			while not color in ('C', 'BW'):
-				print "Color ('C' for color or 'BW' for black/white)",
-				color = raw_input_field(meta, 'color')
-				meta['color'] = color
-			print "Titles",
-			meta['announcing_titles'] = raw_input_field(meta, 'announcing_titles')
-			print "Credits",
-			meta['credits'] = raw_input_field(meta, 'credits')
-
-		print "Related URL",
-		meta['url'] = raw_input_field(meta, 'url')
-		print "Suggestions",
-		meta['fruition_suggestions'] = raw_input_field(meta, 'fruition_suggestions')
-		print "Future plans",
-		meta['future_plans'] = raw_input_field(meta, 'future_plans')
-
-		while ve_status not in ('Y', 'N'):
-			print "Virtual Entity Status ('Y' if Virtual Entity, or 'N' if you wish to use another license)",
-			ve_status = raw_input_field(meta, 've_status')
-			meta['ve_status'] = ve_status
-		if meta['ve_status'] == 'N':
-			print "License",
-			meta['license'] = raw_input_field(meta, 'license')
-		else:
-			meta['license'] = "Virtual Entity"
-			print "This is a Virtual Entity."
-
-	if opts.command == 'create' and not edited_soul:
-		print "Please provide an access password for Soul (or press ENTER to leave Soul open):",
-		opts.password = raw_input()
-
-	# ...and create soul in database.
-	if opts.command == 'create':
-		try:
 			if not edited_soul:
-				ve.create(opts.input, opts.password)
-				print "Soul created."
-		except IOError, (errno, strerror):
-			print "Error: %s" % (strerror)
-		except VeDBException, (errno, strerror):
-			print "Error: %s" % (strerror)
+				substance = ""
+				while (not substance in ('text', 'audio', 'video', 'image')):
+					print "Substance [text, audio, video, image]:",
+					substance = raw_input()
+				print "Define " + substance + " Soul."
+			else:
+				substance = edited_soul['substance']
+				if substance=='T': substance='text'
+				if substance=='A': substance='audio'
+				if substance=='V': substance='video'
+				if substance=='I': substance='image'
+				print "Define " + substance + " soul."
 
-	if opts.command == 'edit' or opts.command == 'create':
-		if edited_soul:
-			ve.remove_meta(edited_soul, opts.password)
-		if substance == 'text':
-			ve.add_text_meta(opts.input, opts.password, meta)
-		if substance == 'audio':
-			ve.add_audio_meta(opts.input, opts.password, meta)
-		if substance == 'video':
-			ve.add_video_meta(opts.input, opts.password, meta)
-		if substance == 'image':
-			ve.add_image_meta(opts.input, opts.password, meta)
-		if edited_soul:
-			print "Soul updated."
-                
-#		 	print "May the Entity be with you!"				
+			print "Title",
+			meta['title'] = raw_input_field(meta, 'title')
+			print "Author",
+			meta['author'] = raw_input_field(meta, 'author')
+			print "Year (of creation)",
+			meta['year_of_creation'] = raw_input_field(meta, 'year_of_creation')
+			print "Date (of upload) (format: YYYY-DD-MM)",
+			meta['date_of_upload'] = raw_input_field(meta, 'date_of_upload')
+			print "Place (of creation)",
+			meta['place_of_creation'] = raw_input_field(meta, 'place_of_creation')
+			print "Subject",
+			meta['subject'] = raw_input_field(meta, 'subject')
+			if substance != 'image':
+				print "Language (main)",
+				meta['language'] = raw_input_field(meta, 'language')
+			print "Publisher",
+			meta['publisher'] = raw_input_field(meta, 'publisher')
+			print "Collection",
+			meta['collection'] = raw_input_field(meta, 'collection')
 
-# ...whenever a body is by nature divisible through and through, whether by bisection or...
+			if substance == 'text':
+				print "Pages",
+				meta['pages'] = raw_input_field(meta, 'pages')
+				print "First edition year",
+				meta['first_edition_year'] = raw_input_field(meta, 'first_edition_year')
+				print "ISBN",
+				meta['isbn'] = raw_input_field(meta, 'isbn')
+			if substance == 'audio':
+				print "Duration",
+				meta['duration'] = raw_input_field(meta, 'duration')
+			if substance == 'video':
+				print "Duration",
+				meta['duration'] = raw_input_field(meta, 'duration')
+			if substance == 'image':
+				print "Size",
+				meta['size'] = raw_input_field(meta, 'size')
 
-	if opts.command == 'aura':
-		print "You are now writing in the Aura of the Soul of " + opts.input
+			print "Keywords",
+			meta['keywords'] = raw_input_field(meta, 'keywords')
+			print "Type/Genre",
+			meta['type'] = raw_input_field(meta, 'type')
 
-		resp = ""
-		resp1 = ""
-		print "Do you want to add a descendent to this file (Y/N)?",
-		resp1 = raw_input()
-		if resp1=='Y':
-			print "Insert child filename:",
-			child = raw_input()
-				
-			print "Making " + child + " descendent of " + opts.input
-			ve.parentize(opts.input, child)	
+			while natural_born not in ('D', 'A'):
+				print "Natural Born ('D' for digital or 'A' for analogue)",
+				natural_born = raw_input_field(meta, 'natural_born')
+				meta['natural_born'] = natural_born
+			if meta['natural_born'] == 'A':
+				print "Carrier",
+				meta['carrier'] = raw_input_field(meta, 'carrier')
+				print "Digitisation Process",
+				meta['digitisation_process'] = raw_input_field(meta, 'digitisation_process')
+				meta['creation_software'] = ""
+			else:
+				print "Creation software",
+				meta['creation_software'] = raw_input_field(meta, 'creation_software')
+				meta['carrier'] = ""
+				meta['digitisation_process'] = ""
 
-			print "Do you want to add another descendent to this file (Y/N)?",
-			resp = raw_input()
-			if resp=='Y':
+			if substance == 'audio':
+				print "Short content",
+				meta['short_content'] = raw_input_field(meta, 'short_content')
+				print "Sound (stereo/mono)",
+				meta['sound'] = raw_input_field(meta, 'sound')
+
+			if substance == 'video':
+				print "System (PAL, NTSC)",
+				meta['system'] = raw_input_field(meta, 'system')
+				print "Short content",
+				meta['short_content'] = raw_input_field(meta, 'short_content')
+				print "Sound",
+				meta['sound'] = raw_input_field(meta, 'sound')
+				while not color in ('C', 'BW'):
+					print "Color ('C' for color or 'BW' for black/white)",
+					color = raw_input_field(meta, 'color')
+					meta['color'] = color
+				print "Titles",
+				meta['announcing_titles'] = raw_input_field(meta, 'announcing_titles')
+				print "Credits",
+				meta['credits'] = raw_input_field(meta, 'credits')
+
+			print "Related URL",
+			meta['url'] = raw_input_field(meta, 'url')
+			print "Suggestions",
+			meta['fruition_suggestions'] = raw_input_field(meta, 'fruition_suggestions')
+			print "Future plans",
+			meta['future_plans'] = raw_input_field(meta, 'future_plans')
+
+			while ve_status not in ('Y', 'N'):
+				print "Virtual Entity Status ('Y' if Virtual Entity, or 'N' if you wish to use another license)",
+				ve_status = raw_input_field(meta, 've_status')
+				meta['ve_status'] = ve_status
+			if meta['ve_status'] == 'N':
+				print "License",
+				meta['license'] = raw_input_field(meta, 'license')
+			else:
+				meta['license'] = "Virtual Entity"
+				print "This is a Virtual Entity."
+
+		if opts.command == 'create' and not edited_soul:
+			print "Please provide an access password for Soul (or press ENTER to leave Soul open):",
+			opts.password = raw_input()
+
+		# ...and create soul in database.
+		if opts.command == 'create':
+			try:
+				if not edited_soul:
+					ve.create(opts.input, opts.password)
+					print "Soul created."
+			except IOError, (errno, strerror):
+				print "Error: %s" % (strerror)
+			except VeDBException, (errno, strerror):
+				print "Error: %s" % (strerror)
+
+		if opts.command == 'edit' or opts.command == 'create':
+			if edited_soul:
+				ve.remove_meta(edited_soul, opts.password)
+			if substance == 'text':
+				ve.add_text_meta(opts.input, opts.password, meta)
+			if substance == 'audio':
+				ve.add_audio_meta(opts.input, opts.password, meta)
+			if substance == 'video':
+				ve.add_video_meta(opts.input, opts.password, meta)
+			if substance == 'image':
+				ve.add_image_meta(opts.input, opts.password, meta)
+			if edited_soul:
+				print "Soul updated."
+			
+	#		 	print "May the Entity be with you!"				
+
+	# ...whenever a body is by nature divisible through and through, whether by bisection or...
+
+		if opts.command == 'aura':
+			print "You are now writing in the Aura of the Soul of " + opts.input
+
+			resp = ""
+			resp1 = ""
+			print "Do you want to add a descendent to this file (Y/N)?",
+			resp1 = raw_input()
+			if resp1=='Y':
 				print "Insert child filename:",
 				child = raw_input()
-
+					
 				print "Making " + child + " descendent of " + opts.input
-				ve.parentize(opts.input, child)
-				resp = ""
-			
+				ve.parentize(opts.input, child)	
 
-		resp = ""
-		resp2 = ""
-		print "Do you want to add ancestors to this file (Y/N)?",
-		resp2 = raw_input()
-		if resp2=='Y':
-			print "Insert ancestor filename:",
-			parent = raw_input()
+				print "Do you want to add another descendent to this file (Y/N)?",
+				resp = raw_input()
+				if resp=='Y':
+					print "Insert child filename:",
+					child = raw_input()
 
-			print "Making " + parent + " ancestor of " + opts.input
-			ve.parentize(parent, opts.input)
+					print "Making " + child + " descendent of " + opts.input
+					ve.parentize(opts.input, child)
+					resp = ""
+				
 
-			print "Do you want to add another ancestors to this file (Y/N)?",
-			resp = raw_input()
-			if resp=='Y':
+			resp = ""
+			resp2 = ""
+			print "Do you want to add ancestors to this file (Y/N)?",
+			resp2 = raw_input()
+			if resp2=='Y':
 				print "Insert ancestor filename:",
 				parent = raw_input()
 
 				print "Making " + parent + " ancestor of " + opts.input
 				ve.parentize(parent, opts.input)
-				resp = ""
 
-		resp = ""
-		resp3 = "" 
+				print "Do you want to add another ancestors to this file (Y/N)?",
+				resp = raw_input()
+				if resp=='Y':
+					print "Insert ancestor filename:",
+					parent = raw_input()
 
-		print "Do you want to add a semantic relation to this file (Y/N)?",
-		resp3 = raw_input()
-		if resp3=='Y':
-			print "Insert related filename:",
-			related = raw_input()
+					print "Making " + parent + " ancestor of " + opts.input
+					ve.parentize(parent, opts.input)
+					resp = ""
 
-			print "Making " + related + " semantically connected to " + opts.input
-			ve.add_annotation('', opts.input, related)
-			
-			print "Do you want to add another semantic relation to this file (Y/N)?",
-			resp = raw_input()
-			if resp=='Y':
+			resp = ""
+			resp3 = "" 
+
+			print "Do you want to add a semantic relation to this file (Y/N)?",
+			resp3 = raw_input()
+			if resp3=='Y':
 				print "Insert related filename:",
 				related = raw_input()
 
 				print "Making " + related + " semantically connected to " + opts.input
 				ve.add_annotation('', opts.input, related)
-				resp= ""
 				
-		resp = ""
-		resp4 = ""
+				print "Do you want to add another semantic relation to this file (Y/N)?",
+				resp = raw_input()
+				if resp=='Y':
+					print "Insert related filename:",
+					related = raw_input()
 
-		print "Do you want to expand soul of " + opts.input + " with annotation (Y/N)?",
-		resp4 =raw_input() 
-		if resp4=='Y':		
-			print "Insert text:",
-                 	text = raw_input()
-                 	ve.add_annotation(text, opts.input, '')
+					print "Making " + related + " semantically connected to " + opts.input
+					ve.add_annotation('', opts.input, related)
+					resp= ""
+					
+			resp = ""
+			resp4 = ""
 
-			print "Do you want to expand soul of " + opts.input + " with another annotation (Y/N)?",	
-			resp = raw_input()
-			if resp=='Y':
+			print "Do you want to expand soul of " + opts.input + " with annotation (Y/N)?",
+			resp4 =raw_input() 
+			if resp4=='Y':		
 				print "Insert text:",
 				text = raw_input()
 				ve.add_annotation(text, opts.input, '')
 
-		if resp1==resp2==resp3==resp4=='N':
-			print "Better a small aura than one full of garbage." 
-		
-		else:
-			print "Aura expanded!"
+				print "Do you want to expand soul of " + opts.input + " with another annotation (Y/N)?",	
+				resp = raw_input()
+				if resp=='Y':
+					print "Insert text:",
+					text = raw_input()
+					ve.add_annotation(text, opts.input, '')
 
-			print "May the Entity be with you!"
-         
-
-
-	if opts.command == 'twin':
-		soul = ve.add_alias(opts.orig, opts.alias)
-
-
-        if opts.command == 'scan':
-		print "\nScanning ",
-		if opts.input:
-			print "\n",
-			soul = ve.get_soul(opts.input)
-			if not soul:
-				print opts.input + " soul not found"
+			if resp1==resp2==resp3==resp4=='N':
+				print "Better a small aura than one full of garbage." 
+			
 			else:
-				print opts.input + ":"
-				print_status(soul, True, True)
-		else:
-			print "directory for souls:\n"
-			for infile in glob.glob('*'):
-				if os.path.isfile(infile):
-					soul = ve.get_soul(infile)
-					if not soul:
-						print infile + " soul not found"
-					else:
-						print infile + ":"
-						print_status(soul, False, False)
+				print "Aura expanded!"
+
+				print "May the Entity be with you!"
+		 
 
 
-	if opts.command == 'parentize':
-		print "Making " + opts.input + " ancestor of " + opts.input2
-		ve.parentize(opts.input, opts.input2)
-	
-	if opts.command == 'expand':
-		print "Adding annotation to expand soul of " + opts.input,
-		if opts.input2:
-			print " and " + opts.input2
-		else:
-			print
-		print "Insert text:",
-		text = raw_input()
-		ve.add_annotation(text, opts.input, opts.input2)
+		if opts.command == 'twin':
+			soul = ve.add_alias(opts.orig, opts.alias)
 
 
+		if opts.command == 'scan':
+			print "\nScanning ",
+			if opts.input:
+				print "\n",
+				soul = ve.get_soul(opts.input)
+				if not soul:
+					print opts.input + " soul not found"
+				else:
+					print opts.input + ":"
+					print_status(soul, True, True)
+			else:
+				print "directory for souls:\n"
+				for infile in glob.glob('*'):
+					if os.path.isfile(infile):
+						soul = ve.get_soul(infile)
+						if not soul:
+							print infile + " soul not found"
+						else:
+							print infile + ":"
+							print_status(soul, False, False)
+
+
+		if opts.command == 'parentize':
+			print "Making " + opts.input + " ancestor of " + opts.input2
+			ve.parentize(opts.input, opts.input2)
+		
+		if opts.command == 'expand':
+			print "Adding annotation to expand soul of " + opts.input,
+			if opts.input2:
+				print " and " + opts.input2
+			else:
+				print
+			print "Insert text:",
+			text = raw_input()
+			ve.add_annotation(text, opts.input, opts.input2)
+
+	except KeyboardInterrupt: 
+		print '\n Goodbye'
+		sys.exit(1)
 
 	
 

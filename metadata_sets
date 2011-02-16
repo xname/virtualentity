@@ -1,5 +1,5 @@
 =================================================================
-     METADATA FIELDS - PROTOTYPE SERIE 03 - CODENAME MUSOCCO
+     METADATA FIELDS - PROTOTYPE SERIE 04 - CODENAME OLIVER
 =================================================================
 
 ________________________________________________________________
@@ -18,24 +18,24 @@ AUDIO
 Title 
 Author
 Year (of creation)
-Date (of upload)
+Date (of upload)  	//--> maybe edit out  
 Place (of creation)
 Subject
+keywords
 Language (main)
-Publisher 
-Collection
+Publisher 		//-->
+Collection		//-->
 Duration
-Keywords
 Type/Genre 
 Natural Born (digital or analogue)
-Analogue/Material Carrier (if born analogue)
-Digitisation process (if born analogue)
-Creation Software (if born digital) 
+Carrier (if analogue)
+Digitisation process (if analogue)
+Creation Software (if digital) 
 Short Content
 Sound (stereo/mono)
 Related URL
-Fruition Suggestions 
-FuturePlans 
+Suggestions 
+Future 
 Virtual Entity Status
 License (if not VE)
 
@@ -49,25 +49,25 @@ Year (of creation)
 Date (of upload)
 Place (of creation)
 Subject
+keywords
 Language (main)
-Publisher
-Collection 
+Publisher		//-->ambiguus
+Collection 		//-->
 Duration
-Keywords
 Type/Genre 
 Format (original carrier. ex, dv, beta)
 Natural Born (digital or analogue)
-Analogue/Material Carrier (if born analogue)
-Digitisation process (if born analogue)
-Creation Software (if born digital) 
+Carrier (if analogue)
+Digitisation process (if analogue)
+Creation Software (if digital) 
 System (original=PAL, NTSC) 
 Short Content
 Sound
 Color/bw
-Announcing Titles
+Titles
 Credits
 Related URL
-Fruition Suggestions
+Suggestions
 Future Plans 
 Virtual Entity Status
 License (if not VE)
@@ -78,26 +78,26 @@ TEXT
 
 Title 
 Author
-Year (of creation)
-Date (of upload)
+Year //(of creation)
+//Date (of upload)
 Place (of creation)
 Subject
+keywords
 Language (main)
-Publisher
-Collection
+Publisher	//--->
+Collection	//--->
 Pages
 First Edition Year
 ISBN 
-Keywords
 Type/Genre
 Format (original)
 Natural Born (digital or analogue)
-Analogue/Material Carrier (if born analogue)
-Digitisation Process (if born analogue)
-Creation Software (if born digital)
+Carrier (if analogue)
+Digitisation Process (if analogue)
+Creation Software (if digital)
 Related URL
-Fruition Suggestions
-Future Plans 
+Suggestions
+Future //Plans 
 Virtual Entity Status
 License (if not VE)
 
@@ -112,20 +112,20 @@ Date (of upload)
 Place (of creation)
 Filename
 Subject
-Publisher
-Collection
-Size 
 Keywords
+Publisher		//-->
+Collection		//--> ambiguus
+Size 
 Type
 Genre
 Format
 Natural Born (digital or analog)
 Digitization Process (if born analog)
-Analog Carrier (if born analog)
+Carrier (if born analog)
 Creation Software (if born digital)
 Related URL
-Fruition Suggestions
-Future Plans 
+Suggestions
+Future //Plans 
 Virtual Entity Status
 License (if not VE)
 

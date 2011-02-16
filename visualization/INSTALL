@@ -1,0 +1,19 @@
+Virtual Entity Fluxus Visualization
+
+Requirements:
+- fluxus (Racket version from git, http://git.savannah.gnu.org/cgit/fluxus.git)
+- Racket 5+
+
+If you receive the following error message:
+
+default-module-name-resolver: the kernel's resolver works only on `quote' forms; given: '(lib "planet/resolver.rkt")
+
+ === context ===
+ standard-module-name-resolver
+ /Users/gabor/projects/virtualentity/virtualentity/visualization/mysql/private/auth.rkt: [traversing imports]
+ /Users/gabor/projects/virtualentity/virtualentity/visualization/mysql/main.rkt: [traversing imports]
+
+It seems that Racket tries to recompile the modules based on file dates, but it cannot do it from fluxus.
+Try to run this command in the visualization directory:
+touch -t 201102091007 mysql/private/compiled/auth_ss.zo
+

@@ -6,6 +6,7 @@
 (provide souls
 		 (struct-out soul)
 		 aliases
+		 id->alias
 		 (struct-out alias))
 
 (define-struct soul (id md5 substance password filename) #:transparent)
@@ -26,15 +27,20 @@
 		(make-soul id md5 (string->symbol substance) password filename))
 	  "select id,md5,substance,password,filename from souls;"))
 
-(define aliases (make-hash))
-
-(for-each
-	(lambda (a)
-		(hash-set! aliases (alias-soul-id a) a))
+(define aliases
 	(query/map
 	  (lambda (id soul-id md5)
 		(make-alias id soul-id md5))
 	  "select id,soul_id,md5 from aliases;"))
+
+(define id->alias (make-hash))
+
+(for-each
+	(lambda (a)
+	  	(let* ([id (alias-soul-id a)]
+			   [num (hash-ref! id->alias id 0)])
+			(hash-set! id->alias id (+ num 1))))
+	aliases)
 
 (close-connection! ve-connection)
 

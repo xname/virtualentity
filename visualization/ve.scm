@@ -14,17 +14,31 @@
         [(> v b) b]
         [else v]))
 
+(define (draw-arrow p0 p1)
+        (let* ([c (vnormalise (vtransform-rot #(0 0 1)
+                                          (minverse (get-camera-transform))))]
+               [v (vnormalise (vsub p1 p0))]
+               [n (vmul (vcross v c) .3)]
+               [pa (vsub p1 (vmul v .4))])
+
+            (draw-line (vadd pa n) p1)
+            (draw-line (vsub pa n) p1)
+            (draw-line p0 p1)))
+
 (define ve%
   (class object%
          (init-field s) ; soul
 
          (define p (build-icosphere 3))
+         (define radius 
+            (+ .1 (* 1 (clamp (/ (hash-ref! id->genetic (soul-id s) 0) max-genetic-size)
+                                      0 1))))
          (with-primitive p
             (random-seed (bitwise-and (string->number (soul-md5 s) 16)
                          (sub1 (arithmetic-shift 1 31))))
             (translate (vmul (srndvec) 8))
-            (scale (+ .2 (* 2 (clamp (/ (hash-ref! id->genetic (soul-id s) 0) max-genetic-size)
-                                      0 1))))
+            (scale radius)
+
             (let ([col (rgb->hsv
                             (case (soul-substance s)
                                 [(A) #(0 0 1)]
@@ -36,17 +50,36 @@
                                         (clamp (+ .2 (* .8 (/ nalias max-aliases-lum))) 0 1))))))
 
          (define semantic '()) ; semantic relation id's
+         (define genetic '()) ; genetic relation id's
+
+         (define/public (get-radius)
+            radius)
 
          (define/public (add-semantic other-id)
             (when other-id
                 (set! semantic (cons other-id semantic))))
+
+         (define/public (add-genetic other-id)
+            (when other-id
+                (set! genetic (cons other-id genetic))))
 
          (define/public (update)
             (for ([other-id semantic])
                 (with-state
                   (wire-opacity .5)
                   (line-width 2)
-                  (draw-line (get-pos) (send (hash-ref ve-hash other-id) get-pos)))))
+                  (draw-line (get-pos) (send (hash-ref ve-hash other-id) get-pos))))
+            
+            (for ([other-id genetic])
+                (with-state
+                  (wire-opacity .5)
+                  (line-width 2)
+                  (let* ([p0 (get-pos)]
+                         [other (hash-ref ve-hash other-id)]
+                         [p1 (send other get-pos)]
+                         [r (send other get-radius)]
+                         [p2 (vsub p1 (vmul (vnormalise (vsub p1 p0)) r))])
+                      (draw-arrow p0 p2)))))
 
          (define/public (get-pos)
             (let ([t (with-primitive p
@@ -70,6 +103,13 @@
           add-semantic (annotation-soul-id-2 a)))
   annotations)
 
+; genetic relations
+(for-each
+  (lambda (s)
+    (send (hash-ref ve-hash (parent/soul-parent-id s))
+          add-genetic (parent/soul-soul-id s)))
+  parent-soul-rel)
+
 (define (mainloop)
   (hash-for-each
     ve-hash
@@ -78,5 +118,4 @@
 
 (every-frame
   (mainloop))
-
 

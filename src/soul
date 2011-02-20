@@ -5,6 +5,7 @@ import getopt
 import glob
 import os
 import readline
+import getpass
 
 sys.path.insert(0,'/usr/share/soul/')
 
@@ -348,15 +349,13 @@ if __name__ == "__main__":
 			edited_soul = ve.get_soul(opts.input)
 			if edited_soul:
 				if not ve.check_ownership(edited_soul, ""):
-					print "Soul exists. Please insert password:",
-					opts.password = raw_input()
+					opts.password = getpass.getpass("Soul exists. Please insert password:")
 					if not ve.check_ownership(edited_soul, opts.password):
 						print "Wrong password. Access denied."
 						sys.exit(0)
 				else:
 					print "This Soul is open!"
-					print "Please enter new password (or press ENTER to leave Soul open):",
-					opts.password = raw_input()
+					opts.password = getpass.getpass("Please enter new password (or press ENTER to leave Soul open):")
 					ve.change_soul_password(edited_soul, opts.password)
 					
 				meta = ve.get_meta_from_soul(edited_soul)
@@ -480,8 +479,7 @@ if __name__ == "__main__":
 				print "This is a Virtual Entity."
 
 		if opts.command == 'create' and not edited_soul:
-			print "Please provide an access password for Soul (or press ENTER to leave Soul open):",
-			opts.password = raw_input()
+			opts.password = getpass.getpass("Please provide an access password for Soul (or press ENTER to leave Soul open):")
 
 		# ...and create soul in database.
 		if opts.command == 'create':

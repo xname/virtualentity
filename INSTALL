@@ -23,11 +23,18 @@ $ sudo apt-get install mysql-server apache2 phpmyadmin
 ##### Get Virtual Entity! ##########################################
 Download the latest release from:
 http://virtualentity.org/downloads/software/
+Or, better, from the official repository:
+http://code.xname.cc/?p=virtualentity.git;a=summary
+Select the link 'snapshot' in the shortlog tagged 'master'
 Open a terminal, go to the directory where you put the package
 and unpack it:
 $ tar xfvz virtualentity-alpha_minus.tar.gz
-Or can clone the project using git:
+You can also clone the project using git:
 $ git clone git://code.xname.cc/virtualentity.git
+Update your repository running:
+$git pull git://code.xname.cc/virtualentity.git HEAD master 
+
+
 #####################################################################
 
 #####################################################################

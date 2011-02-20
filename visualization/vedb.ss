@@ -9,12 +9,15 @@
 		 id->alias
 		 (struct-out alias)
 		 annotations
-		 (struct-out annotation))
-
+		 (struct-out annotation)
+		 parent-soul-rel
+		 (struct-out parent/soul)
+		 id->genetic)
 
 (define-struct soul (id md5 substance password filename) #:transparent)
 (define-struct alias (id soul-id md5) #:transparent)
 (define-struct annotation (id note soul-id-1 soul-id-2 inserted-at) #:transparent)
+(define-struct parent/soul (soul-id parent-id) #:transparent)
 
 (define ve-host "db.virtualentity.org")
 (define ve-port 3306)
@@ -51,6 +54,21 @@
 			   [num (hash-ref! id->alias id 0)])
 			(hash-set! id->alias id (+ num 1))))
 	aliases)
+
+(define parent-soul-rel
+	(query/map
+	  (lambda (soul-id parent-id)
+		(make-parent/soul soul-id parent-id))
+	  "select soul_id,parent_soul_id from parent_soul_rel;"))
+
+(define id->genetic (make-hash))
+(for-each
+	(lambda (ps)
+		(let* ([sid (parent/soul-soul-id ps)]
+			   [pid (parent/soul-parent-id ps)]
+			   [num (hash-ref! id->genetic pid 0)])
+			(hash-set! id->genetic pid (+ num 1))))
+	parent-soul-rel)
 
 (close-connection! ve-connection)
 

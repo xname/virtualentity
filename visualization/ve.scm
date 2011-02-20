@@ -6,7 +6,8 @@
 (clear)
 (hint-anti-alias)
 
-(define max-aliases 5) ; above this the entity gets maximum luminance
+(define max-aliases-lum 5) ; above this the entity gets maximum luminance
+(define max-genetic-size 5) ; above this the entity gets maximum size
 
 (define (clamp v a b)
   (cond [(< v a) a]
@@ -21,8 +22,9 @@
          (with-primitive p
             (random-seed (bitwise-and (string->number (soul-md5 s) 16)
                          (sub1 (arithmetic-shift 1 31))))
-            (translate (vmul (crndvec) 7))
-            (scale .3)
+            (translate (vmul (srndvec) 8))
+            (scale (+ .2 (* 2 (clamp (/ (hash-ref! id->genetic (soul-id s) 0) max-genetic-size)
+                                      0 1))))
             (let ([col (rgb->hsv
                             (case (soul-substance s)
                                 [(A) #(0 0 1)]
@@ -31,7 +33,7 @@
                                 [(I) #(1 0 1)]))]
                   [nalias (hash-ref! id->alias (soul-id s) 0)])
               (colour (hsv->rgb (vector (vx col) (vy col)
-                                        (clamp (+ .2 (* .8 (/ nalias max-aliases))) 0 1))))))
+                                        (clamp (+ .2 (* .8 (/ nalias max-aliases-lum))) 0 1))))))
 
          (define semantic '()) ; semantic relation id's
 

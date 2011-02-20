@@ -7,10 +7,14 @@
 		 (struct-out soul)
 		 aliases
 		 id->alias
-		 (struct-out alias))
+		 (struct-out alias)
+		 annotations
+		 (struct-out annotation))
+
 
 (define-struct soul (id md5 substance password filename) #:transparent)
 (define-struct alias (id soul-id md5) #:transparent)
+(define-struct annotation (id note soul-id-1 soul-id-2 inserted-at) #:transparent)
 
 (define ve-host "db.virtualentity.org")
 (define ve-port 3306)
@@ -32,6 +36,12 @@
 	  (lambda (id soul-id md5)
 		(make-alias id soul-id md5))
 	  "select id,soul_id,md5 from aliases;"))
+
+(define annotations
+	(query/map
+	  (lambda (id note soul-id-1 soul-id-2 inserted-at)
+		(make-annotation id note soul-id-1 (if (sql-null? soul-id-2) #f soul-id-2) inserted-at))
+	  "select id,note,soul_id_1,soul_id_2,inserted_at from annotations;"))
 
 (define id->alias (make-hash))
 

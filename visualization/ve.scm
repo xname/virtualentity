@@ -6,8 +6,8 @@
 (clear)
 (hint-anti-alias)
 
-(define max-aliases-lum 5) ; above this the entity gets maximum luminance
-(define max-genetic-size 5) ; above this the entity gets maximum size
+(define max-aliases-lum 10) ; above this the entity gets maximum luminance
+(define max-genetic-size 10) ; above this the entity gets maximum size
 
 (define (clamp v a b)
   (cond [(< v a) a]
@@ -66,6 +66,7 @@
          (define/public (update)
             (for ([other-id semantic])
                 (with-state
+                  (hint-wire-stippled)
                   (wire-opacity .5)
                   (line-width 2)
                   (draw-line (get-pos) (send (hash-ref ve-hash other-id) get-pos))))

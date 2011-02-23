@@ -18,8 +18,8 @@
         (let* ([c (vnormalise (vtransform-rot #(0 0 1)
                                           (minverse (get-camera-transform))))]
                [v (vnormalise (vsub p1 p0))]
-               [n (vmul (vcross v c) .3)]
-               [pa (vsub p1 (vmul v .4))])
+               [n (vmul (vcross v c) .1)]
+               [pa (vsub p1 (vmul v .15))])
 
             (draw-line (vadd pa n) p1)
             (draw-line (vsub pa n) p1)
@@ -68,13 +68,13 @@
                 (with-state
                   (hint-wire-stippled)
                   (wire-opacity .5)
-                  (line-width 2)
+                  (line-width 1)
                   (draw-line (get-pos) (send (hash-ref ve-hash other-id) get-pos))))
             
             (for ([other-id genetic])
                 (with-state
                   (wire-opacity .5)
-                  (line-width 2)
+                  (line-width 1)
                   (let* ([p0 (get-pos)]
                          [other (hash-ref ve-hash other-id)]
                          [p1 (send other get-pos)]

@@ -7,6 +7,8 @@
 (hint-anti-alias)
 (hint-depth-sort)
 
+(define db-update-time 15) ; in seconds
+
 (define max-aliases-lum 10) ; above this the entity gets maximum luminance
 (define max-genetic-size 10) ; above this the entity gets maximum size
 (define damping .95)
@@ -35,9 +37,8 @@
          (define id (soul-id s))
 
          (define p (build-icosphere 3))
-         (define radius 
-            (+ .1 (* 1 (clamp (/ (hash-ref! id->genetic id 0) max-genetic-size)
-                                      0 1))))
+         (define radius .1)
+
          (define annotations 0)
          (define pos (begin
                         (random-seed (bitwise-and (string->number (soul-md5 s) 16)
@@ -47,6 +48,7 @@
          (define vel (vector 0 0 0))
          (define pvel (vector 0 0 0))
 
+         (define nalias 0) ; number of aliases
          (define col 0)
 
          (define (calc-colour)
@@ -55,8 +57,7 @@
                                 [(A) #(0 0 1)]
                                 [(V) #(1 0 0)]
                                 [(T) #(1 1 1)]
-                                [(I) #(1 0 1)]))]
-                  [nalias (hash-ref! id->alias id 0)])
+                                [(I) #(1 0 1)]))])
               (set! col (hsv->rgb (vector (vx c) (vy c)
                                         (clamp (+ .2 (* .8 (/ nalias max-aliases-lum))) 0 1))))))
 
@@ -67,6 +68,10 @@
 
          (define/public (get-radius)
             radius)
+
+         (define/public (inc-aliases)
+            (set! nalias (+ 1 nalias))
+            (calc-colour))
 
          (define/public (add-semantic other-id)
             (if other-id
@@ -80,6 +85,8 @@
                 (set! vel (vadd vel v)))
 
          (define/public (update)
+            (set! radius (+ .1 (* 1 (clamp (/ (length genetic) max-genetic-size)
+                                      0 1))))
             (for ([other-id (append semantic genetic)])
                  (let* ([other (hash-ref ve-hash other-id)]
                         [poso (send other get-pos)]
@@ -141,25 +148,47 @@
 
 (define ve-hash (make-hash))
 
-; setup souls
-(for-each
-  (lambda (s)
-    (hash-set! ve-hash (soul-id s) (make-object ve% s)))
-  souls)
+(define ve-db-task
+    (let ([db-last-update (- db-update-time)])
+        (lambda ()
+          (when (> (- (time) db-last-update) db-update-time)
+                (set! db-last-update (time))
 
-; semantic relations
-(for-each
-  (lambda (a)
-    (send (hash-ref ve-hash (annotation-soul-id-1 a))
-          add-semantic (annotation-soul-id-2 a)))
-  annotations)
+                (define souls (ve-pull-new-souls))
+                (define annotations (ve-pull-new-annotations))
+                (define parent-soul-rel (ve-pull-new-parent/soul))
+                (define aliases (ve-pull-new-aliases))
 
-; genetic relations
-(for-each
-  (lambda (s)
-    (send (hash-ref ve-hash (parent/soul-parent-id s))
-          add-genetic (parent/soul-soul-id s)))
-  parent-soul-rel)
+                ; souls
+                (for-each
+                  (lambda (s)
+                    ;(printf "new soul: ~a~n" souls)
+                    (hash-set! ve-hash (soul-id s) (make-object ve% s)))
+                  souls)
+
+                ; semantic relations
+                (for-each
+                  (lambda (a)
+                    ;(printf "new annotation: ~a~n" a)
+                    (send (hash-ref ve-hash (annotation-soul-id-1 a))
+                          add-semantic (annotation-soul-id-2 a)))
+                  annotations)
+
+                ; genetic relations
+                (for-each
+                  (lambda (s)
+                    ;(printf "new genetic rel: ~a~n" s)
+                    (send (hash-ref ve-hash (parent/soul-parent-id s))
+                          add-genetic (parent/soul-soul-id s)))
+                  parent-soul-rel)
+
+                ; aliases
+                (for-each
+                    (lambda (a)
+                      ;(printf "new alias: ~a~n" a)
+                      (send (hash-ref ve-hash (alias-soul-id a))
+                            inc-aliases))
+                    aliases)))))
 
 (define (mainloop)
   (set-camera-transform
@@ -170,6 +199,9 @@
     ve-hash
     (lambda (k v)
       (send v update))))
+
+
+(spawn-task ve-db-task)
 
 (every-frame
   (mainloop))

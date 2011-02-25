@@ -3,16 +3,14 @@
 ;(require (planet jaz/mysql:1:7))
 (require (file "mysql/main.ss"))
 
-(provide souls
+(provide ve-pull-new-souls
+		 ve-pull-new-annotations
+		 ve-pull-new-parent/soul
+		 ve-pull-new-aliases
 		 (struct-out soul)
-		 aliases
-		 id->alias
 		 (struct-out alias)
-		 annotations
 		 (struct-out annotation)
-		 parent-soul-rel
-		 (struct-out parent/soul)
-		 id->genetic)
+		 (struct-out parent/soul))
 
 (define-struct soul (id md5 substance password filename) #:transparent)
 (define-struct alias (id soul-id md5) #:transparent)
@@ -31,47 +29,72 @@
 (query "use ve;")
 ;(query "use ve_gab;")
 
-(define souls
-	(query/map
-	  (lambda (id md5 substance password filename)
-		(make-soul id md5 (string->symbol substance) password filename))
-	  "select id,md5,substance,password,filename from souls;"))
+(define ve-pull-new-souls
+  (let ([id->soul (make-hash)])
+		(lambda ()
+		  (let ([current-souls (query/map
+								  (lambda (id md5 substance password filename)
+									(make-soul id md5 (string->symbol substance) password filename))
+								  "select id,md5,substance,password,filename from souls;")])
+			(filter
+			  (lambda (s)
+				(if (hash-ref id->soul (soul-id s) #f)
+				  #f
+				  (begin
+					  (hash-set! id->soul (soul-id s) s)
+					  s)))
+			  current-souls)))))
 
-(define aliases
-	(query/map
-	  (lambda (id soul-id md5)
-		(make-alias id soul-id md5))
-	  "select id,soul_id,md5 from aliases;"))
+(define ve-pull-new-annotations
+  (let ([id->annotation (make-hash)])
+		(lambda ()
+		  (let ([current-annotations
+						(query/map
+						  (lambda (id note soul-id-1 soul-id-2 inserted-at)
+							(make-annotation id note soul-id-1 (if (sql-null? soul-id-2) #f soul-id-2) inserted-at))
+						  "select id,note,soul_id_1,soul_id_2,inserted_at from annotations;")])
+			(filter
+			  (lambda (a)
+				(if (hash-ref id->annotation (annotation-id a) #f)
+				  #f
+				  (begin
+					  (hash-set! id->annotation (annotation-id a) a)
+					  a)))
+			  current-annotations)))))
 
-(define annotations
-	(query/map
-	  (lambda (id note soul-id-1 soul-id-2 inserted-at)
-		(make-annotation id note soul-id-1 (if (sql-null? soul-id-2) #f soul-id-2) inserted-at))
-	  "select id,note,soul_id_1,soul_id_2,inserted_at from annotations;"))
+(define ve-pull-new-parent/soul
+  (let ([id->ps (make-hash)])
+		(lambda ()
+		  (let ([current-ps
+					(query/map
+					  (lambda (soul-id parent-id)
+						(make-parent/soul soul-id parent-id))
+					  "select soul_id,parent_soul_id from parent_soul_rel;")])
+			(filter
+			  (lambda (ps)
+				(if (hash-ref id->ps ps #f)
+				  #f
+				  (begin
+					  (hash-set! id->ps ps #t)
+					  ps)))
+			  current-ps)))))
 
-(define id->alias (make-hash))
+(define ve-pull-new-aliases
+  (let ([id->alias (make-hash)])
+		(lambda ()
+		  (let ([current-aliases
+						(query/map
+						  (lambda (id soul-id md5)
+							(make-alias id soul-id md5))
+						  "select id,soul_id,md5 from aliases;")])
+			(filter
+			  (lambda (a)
+				(if (hash-ref id->alias (alias-id a) #f)
+				  #f
+				  (begin
+					  (hash-set! id->alias (alias-id a) #t)
+					  a)))
+			  current-aliases)))))
 
-(for-each
-	(lambda (a)
-	  	(let* ([id (alias-soul-id a)]
-			   [num (hash-ref! id->alias id 0)])
-			(hash-set! id->alias id (+ num 1))))
-	aliases)
-
-(define parent-soul-rel
-	(query/map
-	  (lambda (soul-id parent-id)
-		(make-parent/soul soul-id parent-id))
-	  "select soul_id,parent_soul_id from parent_soul_rel;"))
-
-(define id->genetic (make-hash))
-(for-each
-	(lambda (ps)
-		(let* ([sid (parent/soul-soul-id ps)]
-			   [pid (parent/soul-parent-id ps)]
-			   [num (hash-ref! id->genetic pid 0)])
-			(hash-set! id->genetic pid (+ num 1))))
-	parent-soul-rel)
-
-(close-connection! ve-connection)
+;(close-connection! ve-connection)
 

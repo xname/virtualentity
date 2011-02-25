@@ -191,7 +191,7 @@
                     aliases)))))
 
 (define (mainloop)
-  (set-camera-transform
+  #;(set-camera-transform
         (mmul
             (mtranslate #(0 0 -10))
             (mrotate (vector 0 (* simulation-speed 2 (time)) 0))))

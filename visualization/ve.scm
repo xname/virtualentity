@@ -9,6 +9,8 @@
 
 (define max-aliases-lum 10) ; above this the entity gets maximum luminance
 (define max-genetic-size 10) ; above this the entity gets maximum size
+(define damping .95)
+(define simulation-speed .2)
 
 (define (clamp v a b)
   (cond [(< v a) a]
@@ -30,12 +32,20 @@
   (class object%
          (init-field s) ; soul
 
+         (define id (soul-id s))
+
          (define p (build-icosphere 3))
          (define radius 
-            (+ .1 (* 1 (clamp (/ (hash-ref! id->genetic (soul-id s) 0) max-genetic-size)
+            (+ .1 (* 1 (clamp (/ (hash-ref! id->genetic id 0) max-genetic-size)
                                       0 1))))
          (define annotations 0)
+         (define pos (begin
+                        (random-seed (bitwise-and (string->number (soul-md5 s) 16)
+                                     (sub1 (arithmetic-shift 1 31))))
+                        (vmul (srndvec) 8)))
+         (define ppos pos)
          (define vel (vector 0 0 0))
+         (define pvel (vector 0 0 0))
 
          (define col 0)
 
@@ -46,18 +56,11 @@
                                 [(V) #(1 0 0)]
                                 [(T) #(1 1 1)]
                                 [(I) #(1 0 1)]))]
-                  [nalias (hash-ref! id->alias (soul-id s) 0)])
+                  [nalias (hash-ref! id->alias id 0)])
               (set! col (hsv->rgb (vector (vx c) (vy c)
                                         (clamp (+ .2 (* .8 (/ nalias max-aliases-lum))) 0 1))))))
 
          (calc-colour)
-         (with-primitive p
-            (random-seed (bitwise-and (string->number (soul-md5 s) 16)
-                         (sub1 (arithmetic-shift 1 31))))
-            (translate (vmul (srndvec) 8))
-            (scale radius)
-            (colour col))
-
 
          (define semantic '()) ; semantic relation id's
          (define genetic '()) ; genetic relation id's
@@ -73,7 +76,28 @@
          (define/public (add-genetic other-id)
             (set! genetic (cons other-id genetic)))
 
+         (define/public (move v)
+                (set! vel (vadd vel v)))
+
          (define/public (update)
+            (for ([other-id (append semantic genetic)])
+                 (let* ([other (hash-ref ve-hash other-id)]
+                        [poso (send other get-pos)]
+                        [rado (send other get-radius)]
+                        [dir (vsub poso pos)]
+                        [d (vdist poso pos)])
+                   (when (and (not (eq? other id))
+                              (> d (* 5 (+ radius rado))))
+                        (let ([vd (vdiv dir d)])
+                          (move vd)
+                          (send other move (vmul vd -1))))))
+            (set! vel (vlerp pvel vel .995))
+            (set! vel (vmul vel damping))
+            (set! pvel vel)
+            (set! pos (vadd pos (vmul vel (* .01 (delta) simulation-speed))))
+            (set! pos (vlerp ppos pos .995))
+            (set! ppos pos)
+
             (when (positive? annotations)
                 (with-state
                   (hint-nozwrite)
@@ -100,7 +124,13 @@
                          [p1 (send other get-pos)]
                          [r (send other get-radius)]
                          [p2 (vsub p1 (vmul (vnormalise (vsub p1 p0)) r))])
-                      (draw-arrow p0 p2)))))
+                      (draw-arrow p0 p2))))
+
+             (with-primitive p
+                (identity)
+                (translate pos)
+                (scale radius)
+                (colour col)))
 
          (define/public (get-pos)
             (let ([t (with-primitive p
@@ -135,7 +165,7 @@
   (set-camera-transform
         (mmul
             (mtranslate #(0 0 -10))
-            (mrotate (vector 0 (time) 0))))
+            (mrotate (vector 0 (* simulation-speed 2 (time)) 0))))
   (hash-for-each
     ve-hash
     (lambda (k v)

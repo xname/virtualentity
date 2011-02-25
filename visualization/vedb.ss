@@ -23,10 +23,13 @@
 (define ve-port 3306)
 (define ve-user "ve")
 (define ve-password "ve")
+;(define ve-user "ve_gab")
+;(define ve-password "ve_gab")
 
 (define ve-connection (connect ve-host ve-port ve-user ve-password))
 
 (query "use ve;")
+;(query "use ve_gab;")
 
 (define souls
 	(query/map

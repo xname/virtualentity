@@ -5,6 +5,7 @@
 
 (clear)
 (hint-anti-alias)
+(hint-depth-sort)
 
 (define max-aliases-lum 10) ; above this the entity gets maximum luminance
 (define max-genetic-size 10) ; above this the entity gets maximum size
@@ -33,21 +34,30 @@
          (define radius 
             (+ .1 (* 1 (clamp (/ (hash-ref! id->genetic (soul-id s) 0) max-genetic-size)
                                       0 1))))
-         (with-primitive p
-            (random-seed (bitwise-and (string->number (soul-md5 s) 16)
-                         (sub1 (arithmetic-shift 1 31))))
-            (translate (vmul (srndvec) 8))
-            (scale radius)
+         (define annotations 0)
+         (define vel (vector 0 0 0))
 
-            (let ([col (rgb->hsv
+         (define col 0)
+
+         (define (calc-colour)
+            (let ([c (rgb->hsv
                             (case (soul-substance s)
                                 [(A) #(0 0 1)]
                                 [(V) #(1 0 0)]
                                 [(T) #(1 1 1)]
                                 [(I) #(1 0 1)]))]
                   [nalias (hash-ref! id->alias (soul-id s) 0)])
-              (colour (hsv->rgb (vector (vx col) (vy col)
+              (set! col (hsv->rgb (vector (vx c) (vy c)
                                         (clamp (+ .2 (* .8 (/ nalias max-aliases-lum))) 0 1))))))
+
+         (calc-colour)
+         (with-primitive p
+            (random-seed (bitwise-and (string->number (soul-md5 s) 16)
+                         (sub1 (arithmetic-shift 1 31))))
+            (translate (vmul (srndvec) 8))
+            (scale radius)
+            (colour col))
+
 
          (define semantic '()) ; semantic relation id's
          (define genetic '()) ; genetic relation id's
@@ -56,14 +66,24 @@
             radius)
 
          (define/public (add-semantic other-id)
-            (when other-id
-                (set! semantic (cons other-id semantic))))
+            (if other-id
+                (set! semantic (cons other-id semantic))
+                (set! annotations (+ 1 annotations))))
 
          (define/public (add-genetic other-id)
-            (when other-id
-                (set! genetic (cons other-id genetic))))
+            (set! genetic (cons other-id genetic)))
 
          (define/public (update)
+            (when (positive? annotations)
+                (with-state
+                  (hint-nozwrite)
+                  (hint-unlit)
+                  (colour col)
+                  (opacity .5)
+                  (translate (get-pos))
+                  (scale (+ radius (* .05 annotations)))
+                  (draw-sphere)))
+
             (for ([other-id semantic])
                 (with-state
                   (hint-wire-stippled)
@@ -112,6 +132,10 @@
   parent-soul-rel)
 
 (define (mainloop)
+  (set-camera-transform
+        (mmul
+            (mtranslate #(0 0 -10))
+            (mrotate (vector 0 (time) 0))))
   (hash-for-each
     ve-hash
     (lambda (k v)
